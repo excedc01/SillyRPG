@@ -1,6 +1,6 @@
-# [Project name]
+# Valdombra — RPG Telegram
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esplorazione, combattimenti a turni e progressi salvati.
 
 ## Run & Operate
 
@@ -9,7 +9,7 @@ _Replace the heading above with the project's name, and this line with one sente
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required env: `DATABASE_URL` and `TELEGRAM_BOT_TOKEN` (secret created with BotFather)
 
 ## Stack
 
@@ -22,23 +22,27 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- Telegram game state and delivery queue: `lib/db/src/schema/telegram-game.ts`
+- Telegram command processing and polling: `artifacts/api-server/src/lib/telegram-game.ts` and `telegram-bot.ts`
+- API contract source: `lib/api-spec/openapi.yaml`
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The bot uses Telegram long polling so local development does not require a public webhook URL.
+- Game updates and outgoing replies are stored in PostgreSQL; a transactional outbox prevents duplicate game actions on Telegram retries.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Players choose a class, explore three regions, fight enemies in turn-based combat, collect coins and healing potions, and gain levels.
+- Characters are saved per Telegram user. Play in a private chat with the bot.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+-
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Set `TELEGRAM_BOT_TOKEN` in Replit Secrets. Never log or display it.
 
 ## Pointers
 
