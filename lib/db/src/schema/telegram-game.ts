@@ -1,5 +1,8 @@
 import { createInsertSchema } from "drizzle-zod";
+import { sql } from "drizzle-orm";
 import {
+  check,
+  foreignKey,
   integer,
   jsonb,
   pgTable,
@@ -8,6 +11,7 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
+import { itemsTable } from "./items";
 
 export type CombatState = {
   name: string;
@@ -54,6 +58,47 @@ export const telegramPlayersTable = pgTable(
     primaryKey({ columns: [table.telegramId, table.chatId] }),
   ],
 );
+
+export const telegramPlayerInventoryTable = pgTable(
+  "telegram_player_inventory",
+  {
+    telegramId: text("telegram_id").notNull(),
+    chatId: text("chat_id").notNull(),
+    itemId: text("item_id")
+      .notNull()
+      .references(() => itemsTable.itemId, { onDelete: "cascade" }),
+    quantity: integer("quantity").notNull().default(1),
+    acquiredAt: timestamp("acquired_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [
+    primaryKey({
+      columns: [table.telegramId, table.chatId, table.itemId],
+    }),
+    foreignKey({
+      name: "telegram_player_inventory_player_fk",
+      columns: [table.telegramId, table.chatId],
+      foreignColumns: [
+        telegramPlayersTable.telegramId,
+        telegramPlayersTable.chatId,
+      ],
+    }).onDelete("cascade"),
+    check(
+      "telegram_player_inventory_quantity_positive",
+      sql`${table.quantity} > 0`,
+    ),
+  ],
+);
+
+export const insertTelegramPlayerInventorySchema = createInsertSchema(
+  telegramPlayerInventoryTable,
+).omit({ acquiredAt: true });
+
+export type TelegramPlayerInventoryItem =
+  typeof telegramPlayerInventoryTable.$inferSelect;
+export type InsertTelegramPlayerInventory =
+  typeof telegramPlayerInventoryTable.$inferInsert;
 
 export const insertTelegramPlayerSchema = createInsertSchema(
   telegramPlayersTable,

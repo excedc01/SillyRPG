@@ -5,9 +5,17 @@ import {
   isNull,
   sql,
 } from "drizzle-orm";
-import { db, telegramOutboxTable, telegramPlayersTable, telegramUpdatesTable } from "@workspace/db";
+import {
+  db,
+  itemsTable,
+  telegramOutboxTable,
+  telegramPlayerInventoryTable,
+  telegramPlayersTable,
+  telegramUpdatesTable,
+} from "@workspace/db";
 import type {
   CombatState,
+  Item,
   InlineKeyboardMarkup,
   TelegramOutboxMessage,
   TelegramPlayer,
@@ -105,9 +113,27 @@ const menuKeyboard: InlineKeyboardMarkup = {
       { text: "Profilo", callback_data: "profile" },
     ],
     [
-      { text: "Inventario", callback_data: "inventory" },
+      { text: "Inventory", callback_data: "inventory" },
       { text: "Luoghi", callback_data: "places" },
     ],
+  ],
+};
+
+const inventoryCategories = [
+  { type: "Weapons", label: "Armi" },
+  { type: "Armors", label: "Armature" },
+  { type: "ClassOrb", label: "Class Orb" },
+] as const;
+
+const inventoryKeyboard: InlineKeyboardMarkup = {
+  inline_keyboard: [
+    [button("Posseduti", "inventory:owned")],
+    [
+      button("Armi", "inventory:catalog:Weapons"),
+      button("Armature", "inventory:catalog:Armors"),
+    ],
+    [button("Class Orb", "inventory:catalog:ClassOrb")],
+    [button("Menu", "menu")],
   ],
 };
 
@@ -226,13 +252,160 @@ function formatProfile(player: TelegramPlayer): string {
   ].join("\n");
 }
 
-function formatInventory(player: TelegramPlayer): string {
+function formatItem(
+  item: Pick<
+    Item,
+    "name" | "rarity" | "tier" | "stats" | "passiveOrEffect"
+  >,
+  quantity?: number,
+): string {
+  const statLabels: Record<string, string> = {
+    hp: "HP",
+    mp: "MP",
+    atk: "ATK",
+    def: "DEF",
+    crit_rate: "Crit",
+  };
+  const stats = Object.entries(item.stats).flatMap(([key, value]) => {
+    if (!(key in statLabels) || typeof value !== "number") return [];
+    const label = statLabels[key]!;
+    const formattedValue =
+      key === "crit_rate"
+        ? `${value >= 0 ? "+" : ""}${Number((value * 100).toFixed(2))}%`
+        : `${value > 0 ? "+" : ""}${value}`;
+    return [`${label} ${formattedValue}`];
+  });
+  const quantityLabel = quantity && quantity > 1 ? ` ×${quantity}` : "";
+  const effect = item.passiveOrEffect
+    ? `\n  Effetto: ${item.passiveOrEffect}`
+    : "";
+
   return [
-    `Zaino di ${player.characterName}`,
-    `Pozioni di cura: ${player.potions}`,
-    `Monete: ${player.coins}`,
-    "Le pozioni si usano durante un combattimento.",
-  ].join("\n");
+    `${item.name}${quantityLabel} — ${item.rarity} · Tier ${item.tier}`,
+    `  ${stats.length > 0 ? stats.join(" · ") : "Nessun bonus"}`,
+  ].join("\n") + effect;
+}
+
+async function getOwnedInventoryItems(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  player: TelegramPlayer,
+) {
+  return tx
+    .select({
+      itemId: itemsTable.itemId,
+      name: itemsTable.name,
+      type: itemsTable.type,
+      tier: itemsTable.tier,
+      rarity: itemsTable.rarity,
+      stats: itemsTable.stats,
+      passiveOrEffect: itemsTable.passiveOrEffect,
+      quantity: telegramPlayerInventoryTable.quantity,
+    })
+    .from(telegramPlayerInventoryTable)
+    .innerJoin(
+      itemsTable,
+      eq(telegramPlayerInventoryTable.itemId, itemsTable.itemId),
+    )
+    .where(
+      and(
+        eq(telegramPlayerInventoryTable.telegramId, player.telegramId),
+        eq(telegramPlayerInventoryTable.chatId, player.chatId),
+      ),
+    )
+    .orderBy(
+      asc(itemsTable.type),
+      asc(itemsTable.tier),
+      asc(itemsTable.name),
+    );
+}
+
+async function inventoryOverview(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  player: TelegramPlayer,
+): Promise<Reply> {
+  const ownedItems = await getOwnedInventoryItems(tx, player);
+  const catalogItems = await tx
+    .select()
+    .from(itemsTable)
+    .orderBy(asc(itemsTable.type), asc(itemsTable.tier), asc(itemsTable.name));
+  const catalogCounts = new Map(
+    inventoryCategories.map(({ type }) => [
+      type,
+      catalogItems.filter((item) => item.type === type).length,
+    ]),
+  );
+
+  return {
+    text: [
+      `Inventory di ${player.characterName}`,
+      "",
+      "OGGETTI POSSEDUTI",
+      ...(ownedItems.length > 0
+        ? ownedItems.map((item) => `• ${formatItem(item, item.quantity)}`)
+        : ["Ancora nessuna arma, armatura o class orb posseduta."]),
+      "",
+      `Pozioni di cura: ${player.potions}`,
+      `Monete: ${player.coins}`,
+      "",
+      "CATALOGO",
+      ...inventoryCategories.map(
+        ({ type, label }) => `${label}: ${catalogCounts.get(type) ?? 0}`,
+      ),
+    ].join("\n"),
+    keyboard: inventoryKeyboard,
+  };
+}
+
+async function ownedInventoryReply(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  player: TelegramPlayer,
+): Promise<Reply> {
+  const ownedItems = await getOwnedInventoryItems(tx, player);
+  return {
+    text: [
+      `Inventory di ${player.characterName}`,
+      "OGGETTI POSSEDUTI",
+      ...(ownedItems.length > 0
+        ? ownedItems.map((item) => `• ${formatItem(item, item.quantity)}`)
+        : ["Ancora nessuna arma, armatura o class orb posseduta."]),
+      "",
+      `Pozioni di cura: ${player.potions}`,
+      `Monete: ${player.coins}`,
+    ].join("\n"),
+    keyboard: inventoryKeyboard,
+  };
+}
+
+async function inventoryCatalogReply(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  player: TelegramPlayer,
+  category: (typeof inventoryCategories)[number],
+): Promise<Reply> {
+  const catalogItems = await tx
+    .select()
+    .from(itemsTable)
+    .where(eq(itemsTable.type, category.type))
+    .orderBy(asc(itemsTable.tier), asc(itemsTable.name));
+  const ownedItems = await getOwnedInventoryItems(tx, player);
+  const ownedById = new Map(ownedItems.map((item) => [item.itemId, item]));
+
+  return {
+    text: [
+      `Inventory di ${player.characterName}`,
+      `CATALOGO · ${category.label.toUpperCase()}`,
+      "",
+      ...(catalogItems.length > 0
+        ? catalogItems.map((item) => {
+            const ownedItem = ownedById.get(item.itemId);
+            return [
+              `• ${formatItem(item, ownedItem?.quantity)}`,
+              `  ${ownedItem ? "Posseduto" : "Non posseduto"}`,
+            ].join("\n");
+          })
+        : ["Nessun oggetto in questa categoria."]),
+    ].join("\n\n"),
+    keyboard: inventoryKeyboard,
+  };
 }
 
 function placesKeyboard(level: number): InlineKeyboardMarkup {
@@ -357,7 +530,7 @@ function helpReply(): Reply {
       "/start — crea il personaggio o riapre il menu",
       "/esplora — cerca incontri, monete e oggetti",
       "/profilo — statistiche e progressi",
-      "/inventario — pozioni e monete",
+      "/inventory (/inventario) — oggetti posseduti e catalogo",
       "/luoghi — scegli la prossima regione",
       "",
       "Durante uno scontro usa Attacca, Usa pozione o Fuggi.",
@@ -657,8 +830,28 @@ async function handleEvent(
   if (command === "/profilo" || callback === "profile") {
     return { text: formatProfile(player), keyboard: menuKeyboard };
   }
-  if (command === "/inventario" || callback === "inventory") {
-    return { text: formatInventory(player), keyboard: menuKeyboard };
+  if (
+    command === "/inventario" ||
+    command === "/inventory" ||
+    callback === "inventory"
+  ) {
+    return inventoryOverview(tx, player);
+  }
+  if (callback === "inventory:owned") {
+    return ownedInventoryReply(tx, player);
+  }
+  if (callback?.startsWith("inventory:catalog:")) {
+    const categoryType = callback.slice("inventory:catalog:".length);
+    const category = inventoryCategories.find(
+      (candidate) => candidate.type === categoryType,
+    );
+    if (!category) {
+      return {
+        text: "Categoria non valida. Apri di nuovo Inventory dal menu.",
+        keyboard: inventoryKeyboard,
+      };
+    }
+    return inventoryCatalogReply(tx, player, category);
   }
   if (player.archetype === "Nessuna") return classSelectionReply();
 
