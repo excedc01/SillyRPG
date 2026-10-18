@@ -23,6 +23,7 @@ Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esp
 ## Where things live
 
 - Telegram game state and delivery queue: `lib/db/src/schema/telegram-game.ts`
+- Shared item catalog and import validation: `lib/db/src/schema/items.ts`
 - Telegram command processing and polling: `artifacts/api-server/src/lib/telegram-game.ts` and `telegram-bot.ts`
 - API contract source: `lib/api-spec/openapi.yaml`
 
@@ -31,6 +32,7 @@ Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esp
 - The bot uses Telegram long polling so local development does not require a public webhook URL.
 - Game updates and outgoing replies are stored in PostgreSQL; a transactional outbox prevents duplicate game actions on Telegram retries.
 - Each character save is scoped to both the Telegram user and the chat, so the same player can have different characters in different groups.
+- Item rows follow one shared schema for weapons, armor, and class orbs; populate the catalog only from the data supplied for those categories.
 
 ## Product
 
