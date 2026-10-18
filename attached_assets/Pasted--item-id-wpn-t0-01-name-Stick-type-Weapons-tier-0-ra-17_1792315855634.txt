@@ -1,0 +1,108 @@
+[
+  {
+    "item_id": "wpn_t0_01",
+    "name": "Stick",
+    "type": "Weapons",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": { "atk": 2 }
+  },
+  {
+    "item_id": "wpn_t0_02",
+    "name": "Big Stick",
+    "type": "Weapons",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": { "atk": 4, "def": -1 }
+  },
+  {
+    "item_id": "wpn_t1_01",
+    "name": "Wooden Spear",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": { "atk": 7, "crit_rate": 0.02 }
+  },
+  {
+    "item_id": "wpn_t1_02",
+    "name": "Wooden Sword",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": { "atk": 8 }
+  },
+  {
+    "item_id": "wpn_t1_03",
+    "name": "Wooden Staff",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": { "atk": 5, "mp": 10 }
+  },
+  {
+    "item_id": "wpn_t2_01",
+    "name": "Stone Dagger",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": { "atk": 12, "crit_rate": 0.05 }
+  },
+  {
+    "item_id": "wpn_t2_02",
+    "name": "Stone Sword",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": { "atk": 15, "def": 2 }
+  },
+  {
+    "item_id": "wpn_t3_01",
+    "name": "Dual Iron Daggers",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": { "atk": 22, "crit_rate": 0.10 }
+  },
+  {
+    "item_id": "wpn_t3_02",
+    "name": "Iron Greatsword",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": { "atk": 28, "def": -3 }
+  },
+  {
+    "item_id": "wpn_t3_03",
+    "name": "Apprentice Staff",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": { "atk": 18, "mp": 30 }
+  },
+  {
+    "item_id": "wpn_t4_01",
+    "name": "Poison Daggers",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": { "atk": 35, "crit_rate": 0.12 },
+    "passive_or_effect": "Applica Veleno (DoT)"
+  },
+  {
+    "item_id": "wpn_t4_02",
+    "name": "Hero Sword",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": { "atk": 45, "hp": 20, "def": 5 }
+  },
+  {
+    "item_id": "wpn_t4_03",
+    "name": "Ice Grimoire",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": { "atk": 30, "mp": 60 },
+    "passive_or_effect": "Chance di rallentare i nemici"
+  }
+]
