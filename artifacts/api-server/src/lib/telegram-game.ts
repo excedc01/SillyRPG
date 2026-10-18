@@ -2,6 +2,7 @@ import {
   and,
   asc,
   eq,
+  inArray,
   isNull,
   sql,
 } from "drizzle-orm";
@@ -15,12 +16,14 @@ import {
 } from "@workspace/db";
 import type {
   CombatState,
+  ItemDrop,
   Item,
   InlineKeyboardMarkup,
   TelegramOutboxMessage,
   TelegramPlayer,
 } from "@workspace/db";
 import type { TelegramUpdate } from "./telegram-types";
+import biomeDefinitions from "../data/biomes.json";
 
 type Actor = {
   id: string;
@@ -44,60 +47,66 @@ type Reply = {
   keyboard?: InlineKeyboardMarkup;
 };
 
+type MonsterTemplate = {
+  mobId: string;
+  name: string;
+  hp: number;
+  attack: number;
+  xpReward: number;
+  dropTable: ItemDrop[];
+};
+
 type Region = {
   id: number;
   name: string;
   level: number;
-  monsters: Array<Omit<CombatState, "hp" | "maxHp"> & { hp: number }>;
-  scenes: string[];
+  recommendedLevel: string;
+  monsters: MonsterTemplate[];
+  boss: MonsterTemplate & { minLevel: number };
 };
 
-const regions: Region[] = [
-  {
-    id: 1,
-    name: "Emerald Grove",
-    level: 0,
-    monsters: [
-      { name: "Lupo d'ombra", hp: 15, attack: 4, xpReward: 15, coinReward: 9 },
-      { name: "Sciame di spine", hp: 18, attack: 5, xpReward: 18, coinReward: 12 },
-      { name: "Cervo corrotto", hp: 22, attack: 6, xpReward: 22, coinReward: 16 },
-    ],
-    scenes: [
-      "Sotto le chiome smeraldine, qualcosa segue i tuoi passi.",
-      "Una folata gelida attraversa il sentiero. Le foglie si muovono controvento.",
-      "Le rovine di un vecchio accampamento affiorano dal muschio.",
-    ],
-  },
-  {
-    id: 2,
-    name: "Cripta di Vetro",
-    level: 3,
-    monsters: [
-      { name: "Sentinella riflessa", hp: 27, attack: 7, xpReward: 30, coinReward: 24 },
-      { name: "Ragno di quarzo", hp: 32, attack: 8, xpReward: 34, coinReward: 28 },
-      { name: "Custode infranto", hp: 38, attack: 9, xpReward: 40, coinReward: 36 },
-    ],
-    scenes: [
-      "La luce si spezza in mille frammenti sulle pareti di cristallo.",
-      "Sotto il pavimento trasparente, un'ombra si muove nella direzione opposta alla tua.",
-      "Una campana di vetro vibra senza emettere alcun suono.",
-    ],
-  },
-  {
-    id: 3,
-    name: "Fortezza Sommersa",
-    level: 5,
-    monsters: [
-      { name: "Cavaliere annegato", hp: 46, attack: 11, xpReward: 50, coinReward: 46 },
-      { name: "Serpe degli abissi", hp: 52, attack: 12, xpReward: 56, coinReward: 52 },
-      { name: "Ammiraglio senza volto", hp: 60, attack: 13, xpReward: 64, coinReward: 64 },
-    ],
-    scenes: [
-      "L'acqua nera sale lungo le mura, ma le torce restano accese.",
-      "Una catena si tende nell'oscurità e trascina qualcosa verso di te.",
-      "Il portone sommerso si apre quanto basta per lasciar passare un'armatura vuota.",
-    ],
-  },
+const regions: Region[] = biomeDefinitions.map((biome) => {
+  const level = Number.parseInt(biome.recommended_level, 10);
+  if (!Number.isInteger(level)) {
+    throw new Error(`Invalid recommended_level for biome ${biome.biome_id}`);
+  }
+  const mapDrops = (
+    drops: Array<{ item_id: string; chance: number }>,
+  ): ItemDrop[] =>
+    drops.map((drop) => ({
+      itemId: drop.item_id,
+      chance: drop.chance,
+    }));
+
+  return {
+    id: biome.biome_id,
+    name: biome.name,
+    level,
+    recommendedLevel: biome.recommended_level,
+    monsters: biome.mobs.map((mob) => ({
+      mobId: mob.mob_id,
+      name: mob.name,
+      hp: mob.hp,
+      attack: mob.atk,
+      xpReward: mob.xp_reward,
+      dropTable: mapDrops(mob.drop_table),
+    })),
+    boss: {
+      mobId: biome.boss.mob_id,
+      name: biome.boss.name,
+      minLevel: biome.boss.min_level,
+      hp: biome.boss.hp,
+      attack: biome.boss.atk,
+      xpReward: biome.boss.xp_reward,
+      dropTable: mapDrops(biome.boss.drop_table),
+    },
+  };
+});
+
+const exploreScenes = [
+  "Un rumore improvviso richiama la tua attenzione.",
+  "Noti tracce fresche lungo il sentiero.",
+  "Qualcosa si muove poco più avanti.",
 ];
 
 const classes = {
@@ -408,16 +417,27 @@ async function inventoryCatalogReply(
   };
 }
 
-function placesKeyboard(level: number): InlineKeyboardMarkup {
+function placesKeyboard(player: TelegramPlayer): InlineKeyboardMarkup {
+  const rows = regions.map((region) => [
+    button(
+      player.level >= region.level
+        ? `${region.name} · livello ${region.recommendedLevel}`
+        : `${region.name} · sblocco al livello ${region.level}`,
+      `region:${region.id}`,
+    ),
+  ]);
+  const currentRegion = getRegion(player.biomeId);
+  rows.push([
+    button(
+      player.level >= currentRegion.boss.minLevel
+        ? `Boss: ${currentRegion.boss.name}`
+        : `Boss: ${currentRegion.boss.name} · livello ${currentRegion.boss.minLevel}`,
+      `boss:${currentRegion.id}`,
+    ),
+  ]);
+
   return {
-    inline_keyboard: regions.map((region) => [
-      button(
-        level >= region.level
-          ? region.name
-          : `${region.name} · livello ${region.level}`,
-        `region:${region.id}`,
-      ),
-    ]),
+    inline_keyboard: rows,
   };
 }
 
@@ -556,12 +576,17 @@ async function explore(
   }
 
   const region = getRegion(player.biomeId);
-  const scene = region.scenes[randomInt(0, region.scenes.length - 1)]!;
+  const scene = `${exploreScenes[randomInt(0, exploreScenes.length - 1)]} Sei in ${region.name}.`;
   const roll = Math.random();
 
   if (roll < 0.68) {
     const template = region.monsters[randomInt(0, region.monsters.length - 1)]!;
-    const enemy: CombatState = { ...template, maxHp: template.hp };
+    const enemy: CombatState = {
+      ...template,
+      maxHp: template.hp,
+      biomeId: region.id,
+      isBoss: false,
+    };
     await tx
       .update(telegramPlayersTable)
       .set({ combat: enemy, updatedAt: new Date() })

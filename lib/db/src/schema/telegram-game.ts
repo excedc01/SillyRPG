@@ -14,12 +14,16 @@ import {
 import { itemsTable } from "./items";
 
 export type CombatState = {
+  mobId?: string;
+  biomeId?: number;
+  isBoss?: boolean;
   name: string;
   hp: number;
   maxHp: number;
   attack: number;
   xpReward: number;
-  coinReward: number;
+  coinReward?: number;
+  dropTable?: Array<{ itemId: string; chance: number }>;
 };
 
 export type InlineKeyboardMarkup = {
