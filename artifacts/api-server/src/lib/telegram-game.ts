@@ -25,6 +25,7 @@ type IncomingEvent = {
   actor: Actor;
   chatId: string;
   chatType: string;
+  newChatMembers: Actor[];
   callbackQueryId: string | null;
   text: string | null;
   callbackData: string | null;
@@ -36,7 +37,7 @@ type Reply = {
 };
 
 type Region = {
-  id: string;
+  id: number;
   name: string;
   level: number;
   monsters: Array<Omit<CombatState, "hp" | "maxHp"> & { hp: number }>;
@@ -45,22 +46,22 @@ type Region = {
 
 const regions: Region[] = [
   {
-    id: "bosco",
-    name: "Bosco di Cenere",
-    level: 1,
+    id: 1,
+    name: "Emerald Grove",
+    level: 0,
     monsters: [
       { name: "Lupo d'ombra", hp: 15, attack: 4, xpReward: 15, coinReward: 9 },
       { name: "Sciame di spine", hp: 18, attack: 5, xpReward: 18, coinReward: 12 },
       { name: "Cervo corrotto", hp: 22, attack: 6, xpReward: 22, coinReward: 16 },
     ],
     scenes: [
-      "Tra i tronchi anneriti, qualcosa segue i tuoi passi.",
+      "Sotto le chiome smeraldine, qualcosa segue i tuoi passi.",
       "Una folata gelida attraversa il sentiero. Le foglie si muovono controvento.",
       "Le rovine di un vecchio accampamento affiorano dal muschio.",
     ],
   },
   {
-    id: "cripta",
+    id: 2,
     name: "Cripta di Vetro",
     level: 3,
     monsters: [
@@ -75,7 +76,7 @@ const regions: Region[] = [
     ],
   },
   {
-    id: "fortezza",
+    id: 3,
     name: "Fortezza Sommersa",
     level: 5,
     monsters: [
@@ -92,9 +93,9 @@ const regions: Region[] = [
 ];
 
 const classes = {
-  guerriero: { name: "Guerriero", hp: 34, attack: 8, defense: 3 },
-  esploratore: { name: "Esploratore", hp: 28, attack: 9, defense: 2 },
-  arcanista: { name: "Arcanista", hp: 24, attack: 12, defense: 1 },
+  guerriero: { name: "Guerriero", hpBonus: 10, attackBonus: 2, defenseBonus: 2 },
+  esploratore: { name: "Esploratore", hpBonus: 4, attackBonus: 3, defenseBonus: 1 },
+  arcanista: { name: "Arcanista", hpBonus: 0, attackBonus: 6, defenseBonus: 0 },
 } as const;
 
 const menuKeyboard: InlineKeyboardMarkup = {
@@ -123,19 +124,31 @@ const combatKeyboard: InlineKeyboardMarkup = {
 function getIncomingEvent(update: TelegramUpdate): IncomingEvent | null {
   const message = update.message;
   const callback = update.callback_query;
-  const actorSource = message?.from ?? callback?.from;
+  const newChatMembers = (message?.new_chat_members ?? [])
+    .filter((member) => !member.is_bot)
+    .map((member) => ({
+      id: String(member.id),
+      firstName: member.first_name || member.username || "Viandante",
+      username: member.username ?? null,
+    }));
+  const actorSource =
+    message?.from ??
+    callback?.from ??
+    message?.new_chat_members?.find((member) => !member.is_bot);
   const chat = message?.chat ?? callback?.message?.chat;
   if (!actorSource || !chat) return null;
+  if (actorSource.is_bot) return null;
 
   return {
     updateId: update.update_id,
     actor: {
       id: String(actorSource.id),
-      firstName: actorSource.first_name || "Viandante",
+      firstName: actorSource.first_name || actorSource.username || "Viandante",
       username: actorSource.username ?? null,
     },
     chatId: String(chat.id),
     chatType: chat.type,
+    newChatMembers,
     callbackQueryId: callback?.id ?? null,
     text: message?.text ?? null,
     callbackData: callback?.data ?? null,
@@ -154,13 +167,51 @@ function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getRegion(id: string): Region {
+function getRegion(id: number): Region {
   return regions.find((region) => region.id === id) ?? regions[0]!;
 }
 
+function baseStats(level: number) {
+  return {
+    hp: 20 + level * 5,
+    attack: 4 + level,
+    defense: 1 + Math.floor(level / 2),
+  };
+}
+
+function classStats(archetypeKey: keyof typeof classes, level: number) {
+  const base = baseStats(level);
+  const bonuses = classes[archetypeKey];
+  return {
+    hp: base.hp + bonuses.hpBonus,
+    attack: base.attack + bonuses.attackBonus,
+    defense: base.defense + bonuses.defenseBonus,
+  };
+}
+
+function playerScope(event: IncomingEvent) {
+  return and(
+    eq(telegramPlayersTable.telegramId, event.actor.id),
+    eq(telegramPlayersTable.chatId, event.chatId),
+  );
+}
+
+function classSelectionReply(): Reply {
+  return {
+    text: "Il personaggio è pronto. Scegli una classe per iniziare a combattere:",
+    keyboard: {
+      inline_keyboard: [
+        [button("Guerriero · resistente", "class:guerriero")],
+        [button("Esploratore · rapido", "class:esploratore")],
+        [button("Arcanista · potente", "class:arcanista")],
+      ],
+    },
+  };
+}
+
 function formatProfile(player: TelegramPlayer): string {
-  const region = getRegion(player.location);
-  const nextLevelXp = player.level * 35;
+  const region = getRegion(player.biomeId);
+  const nextLevelXp = (player.level + 1) * 35;
   const combatLine = player.combat
     ? `\n\nIn combattimento: ${player.combat.name} (${player.combat.hp}/${player.combat.maxHp} PV)`
     : "";
@@ -170,7 +221,7 @@ function formatProfile(player: TelegramPlayer): string {
     `Esperienza: ${player.xp}/${nextLevelXp} XP`,
     `Salute: ${player.hp}/${player.maxHp} PV`,
     `Attacco: ${player.attack} · Difesa: ${player.defense}`,
-    `Luogo: ${region.name}`,
+    `Bioma: ${region.name}`,
     combatLine,
   ].join("\n");
 }
@@ -198,8 +249,9 @@ function placesKeyboard(level: number): InlineKeyboardMarkup {
 }
 
 function homeReply(player: TelegramPlayer): Reply {
+  if (player.archetype === "Nessuna") return classSelectionReply();
   return {
-    text: `Bentornato, ${player.characterName}. Sei nel ${getRegion(player.location).name}.\n\nCosa vuoi fare?`,
+    text: `Bentornato, ${player.characterName}. Sei in ${getRegion(player.biomeId).name}.\n\nCosa vuoi fare?`,
     keyboard: menuKeyboard,
   };
 }
@@ -218,45 +270,79 @@ async function enqueueReply(
   });
 }
 
-async function createCharacter(
+async function ensurePlayer(
   tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
-  event: IncomingEvent,
-  archetypeKey: keyof typeof classes,
-): Promise<Reply> {
-  const archetype = classes[archetypeKey];
+  chatId: string,
+  actor: Actor,
+): Promise<TelegramPlayer> {
+  const stats = baseStats(0);
   const [player] = await tx
     .insert(telegramPlayersTable)
     .values({
-      telegramId: event.actor.id,
-      username: event.actor.username,
-      characterName: event.actor.firstName.slice(0, 48),
-      archetype: archetype.name,
-      hp: archetype.hp,
-      maxHp: archetype.hp,
-      attack: archetype.attack,
-      defense: archetype.defense,
+      telegramId: actor.id,
+      chatId,
+      username: actor.username,
+      characterName: (actor.firstName || actor.username || "Viandante").slice(0, 48),
+      archetype: "Nessuna",
+      level: 0,
+      xp: 0,
+      hp: stats.hp,
+      maxHp: stats.hp,
+      attack: stats.attack,
+      defense: stats.defense,
       potions: 2,
       coins: 10,
-      location: "bosco",
+      biomeId: 1,
       combat: null,
     })
     .onConflictDoNothing()
     .returning();
 
-  if (!player) {
-    const [existing] = await tx
-      .select()
-      .from(telegramPlayersTable)
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id))
-      .limit(1);
-    return existing ? homeReply(existing) : { text: "Non riesco a trovare la tua scheda. Riprova con /start." };
-  }
+  if (player) return player;
 
+  const [existing] = await tx
+    .select()
+    .from(telegramPlayersTable)
+    .where(
+      and(
+        eq(telegramPlayersTable.telegramId, actor.id),
+        eq(telegramPlayersTable.chatId, chatId),
+      ),
+    )
+    .limit(1);
+  if (!existing) throw new Error("Telegram player upsert could not be read back");
+  return existing;
+}
+
+async function chooseClass(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  event: IncomingEvent,
+  player: TelegramPlayer,
+  archetypeKey: keyof typeof classes,
+): Promise<Reply> {
+  if (player.archetype !== "Nessuna") return homeReply(player);
+
+  const archetype = classes[archetypeKey];
+  const stats = classStats(archetypeKey, player.level);
+  const [updatedPlayer] = await tx
+    .update(telegramPlayersTable)
+    .set({
+      archetype: archetype.name,
+      hp: stats.hp,
+      maxHp: stats.hp,
+      attack: stats.attack,
+      defense: stats.defense,
+      updatedAt: new Date(),
+    })
+    .where(playerScope(event))
+    .returning();
+
+  if (!updatedPlayer) throw new Error("Telegram player disappeared during class selection");
   return {
     text: [
-      `La tua avventura comincia, ${player.characterName}.`,
-      `${player.archetype}: ${player.maxHp} PV, attacco ${player.attack}, difesa ${player.defense}.`,
-      "Hai 2 pozioni. Il Bosco di Cenere ti aspetta.",
+      `La tua avventura comincia, ${updatedPlayer.characterName}.`,
+      `${updatedPlayer.archetype} · livello ${updatedPlayer.level}: ${updatedPlayer.maxHp} PV, attacco ${updatedPlayer.attack}, difesa ${updatedPlayer.defense}.`,
+      `Hai ${updatedPlayer.potions} pozioni e ${updatedPlayer.coins} monete. ${getRegion(updatedPlayer.biomeId).name} ti aspetta.`,
       "",
       "Usa i pulsanti o scrivi /aiuto per vedere i comandi.",
     ].join("\n"),
@@ -285,6 +371,7 @@ async function explore(
   event: IncomingEvent,
   player: TelegramPlayer,
 ): Promise<Reply> {
+  if (player.archetype === "Nessuna") return classSelectionReply();
   if (player.combat) {
     return {
       text: `Sei già impegnato contro ${player.combat.name}. Scegli un'azione.`,
@@ -295,7 +382,7 @@ async function explore(
     return { text: "Sei troppo ferito per proseguire. Riposa e riprova." };
   }
 
-  const region = getRegion(player.location);
+  const region = getRegion(player.biomeId);
   const scene = region.scenes[randomInt(0, region.scenes.length - 1)]!;
   const roll = Math.random();
 
@@ -305,7 +392,7 @@ async function explore(
     await tx
       .update(telegramPlayersTable)
       .set({ combat: enemy, updatedAt: new Date() })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     return {
       text: `${scene}\n\n${enemy.name} ti sbarra il cammino! (${enemy.hp} PV)\n\nChe fai?`,
       keyboard: combatKeyboard,
@@ -317,7 +404,7 @@ async function explore(
     await tx
       .update(telegramPlayersTable)
       .set({ coins: player.coins + coinsFound, updatedAt: new Date() })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     return {
       text: `${scene}\n\nTrovi una borsa dimenticata con ${coinsFound} monete. Ora ne hai ${player.coins + coinsFound}.`,
       keyboard: menuKeyboard,
@@ -327,7 +414,7 @@ async function explore(
   await tx
     .update(telegramPlayersTable)
     .set({ potions: player.potions + 1, updatedAt: new Date() })
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+    .where(playerScope(event));
   return {
     text: `${scene}\n\nTra le radici trovi una pozione intatta. Ora ne hai ${player.potions + 1}.`,
     keyboard: menuKeyboard,
@@ -354,8 +441,8 @@ async function attack(
     let defense = player.defense;
     const levelMessages: string[] = [];
 
-    while (xp >= level * 35) {
-      xp -= level * 35;
+    while (xp >= (level + 1) * 35) {
+      xp -= (level + 1) * 35;
       level += 1;
       maxHp += 5;
       playerAttack += 1;
@@ -380,7 +467,7 @@ async function attack(
         potions: player.potions + gainedPotion,
         updatedAt: new Date(),
       })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
 
     lines.push(
       `${enemy.name} è sconfitto. Ottieni ${enemy.xpReward} XP e ${enemy.coinReward} monete.`,
@@ -406,7 +493,7 @@ async function attack(
         coins,
         updatedAt: new Date(),
       })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     lines.push(`Cadi a terra, ma ti risvegli al sicuro con tutta la salute. Perdi 5 monete (te ne restano ${coins}).`);
     return { text: lines.join("\n"), keyboard: menuKeyboard };
   }
@@ -418,7 +505,7 @@ async function attack(
       hp: newHp,
       updatedAt: new Date(),
     })
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+    .where(playerScope(event));
   lines.push(`Tu: ${newHp}/${player.maxHp} PV · ${enemy.name}: ${enemyHp}/${enemy.maxHp} PV.`);
   return { text: lines.join("\n"), keyboard: combatKeyboard };
 }
@@ -448,7 +535,7 @@ async function usePotion(
         coins,
         updatedAt: new Date(),
       })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     lines.push(`Cadi a terra e ti risvegli al sicuro. Perdi 5 monete (te ne restano ${coins}).`);
     return { text: lines.join("\n"), keyboard: menuKeyboard };
   }
@@ -460,7 +547,7 @@ async function usePotion(
       potions: player.potions - 1,
       updatedAt: new Date(),
     })
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+    .where(playerScope(event));
   lines.push(`Salute: ${newHp}/${player.maxHp} PV · Pozioni: ${player.potions - 1}.`);
   return { text: lines.join("\n"), keyboard: combatKeyboard };
 }
@@ -477,7 +564,7 @@ async function flee(
     await tx
       .update(telegramPlayersTable)
       .set({ combat: null, updatedAt: new Date() })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     return { text: `Ti allontani da ${enemy.name} e torni sul sentiero.`, keyboard: menuKeyboard };
   }
 
@@ -493,7 +580,7 @@ async function flee(
         coins,
         updatedAt: new Date(),
       })
-      .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+      .where(playerScope(event));
     return {
       text: `Non riesci a fuggire: ${enemy.name} ti infligge ${damage} danni. Ti risvegli al sicuro e perdi 5 monete.`,
       keyboard: menuKeyboard,
@@ -503,7 +590,7 @@ async function flee(
   await tx
     .update(telegramPlayersTable)
     .set({ hp, updatedAt: new Date() })
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+    .where(playerScope(event));
   return {
     text: `Non riesci a fuggire: ${enemy.name} ti infligge ${damage} danni. Hai ${hp}/${player.maxHp} PV.`,
     keyboard: combatKeyboard,
@@ -516,7 +603,7 @@ async function chooseRegion(
   player: TelegramPlayer,
   regionId: string,
 ): Promise<Reply> {
-  const region = regions.find((candidate) => candidate.id === regionId);
+  const region = regions.find((candidate) => candidate.id === Number(regionId));
   if (!region) return { text: "Questo luogo non esiste.", keyboard: placesKeyboard(player.level) };
   if (player.level < region.level) {
     return {
@@ -529,8 +616,8 @@ async function chooseRegion(
   }
   await tx
     .update(telegramPlayersTable)
-    .set({ location: region.id, updatedAt: new Date() })
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id));
+    .set({ biomeId: region.id, updatedAt: new Date() })
+    .where(playerScope(event));
   return { text: `Raggiungi il ${region.name}. Usa Esplora quando vuoi.`, keyboard: menuKeyboard };
 }
 
@@ -538,42 +625,30 @@ async function handleEvent(
   tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
   event: IncomingEvent,
 ): Promise<Reply> {
-  if (event.chatType !== "private") {
-    return { text: "Per giocare e salvare il personaggio in privato, apri la chat diretta con questo bot." };
-  }
-
-  const [player] = await tx
-    .select()
-    .from(telegramPlayersTable)
-    .where(eq(telegramPlayersTable.telegramId, event.actor.id))
-    .limit(1);
   const command = event.text?.trim().split(/\s+/, 1)[0]?.split("@", 1)[0]?.toLowerCase();
   const callback = event.callbackData;
 
-  if (command === "/start" || command === "/menu" || callback === "menu") {
-    if (!player) {
-      return {
-        text: "Benvenuto a Valdombra. Scegli chi vuoi essere:",
-        keyboard: {
-          inline_keyboard: [
-            [button("Guerriero · resistente", "class:guerriero")],
-            [button("Esploratore · rapido", "class:esploratore")],
-            [button("Arcanista · potente", "class:arcanista")],
-          ],
-        },
-      };
+  if (event.newChatMembers.length > 0) {
+    for (const member of event.newChatMembers) {
+      await ensurePlayer(tx, event.chatId, member);
     }
+    const names = event.newChatMembers.map((member) => member.firstName).join(", ");
+    return {
+      text: `Benvenuto in Valdombra, ${names}! Ho creato un salvataggio personale per ogni membro. Scegli la tua classe:`,
+      keyboard: classSelectionReply().keyboard,
+    };
+  }
+
+  const player = await ensurePlayer(tx, event.chatId, event.actor);
+
+  if (command === "/start" || command === "/menu" || callback === "menu") {
     return homeReply(player);
   }
 
   if (callback?.startsWith("class:")) {
     const key = callback.slice("class:".length);
-    if (!(key in classes)) return { text: "Classe non valida. Usa /start per riprovare." };
-    return createCharacter(tx, event, key as keyof typeof classes);
-  }
-
-  if (!player) {
-    return { text: "Prima crea il tuo personaggio con /start." };
+    if (!Object.hasOwn(classes, key)) return { text: "Classe non valida. Usa /start per riprovare." };
+    return chooseClass(tx, event, player, key as keyof typeof classes);
   }
 
   if (command === "/aiuto" || command === "/help" || callback === "help") {
@@ -585,9 +660,11 @@ async function handleEvent(
   if (command === "/inventario" || callback === "inventory") {
     return { text: formatInventory(player), keyboard: menuKeyboard };
   }
+  if (player.archetype === "Nessuna") return classSelectionReply();
+
   if (command === "/luoghi" || callback === "places") {
     return {
-      text: `Ti trovi nel ${getRegion(player.location).name}. Dove vuoi andare?`,
+      text: `Ti trovi in ${getRegion(player.biomeId).name}. Dove vuoi andare?`,
       keyboard: placesKeyboard(player.level),
     };
   }
@@ -611,6 +688,16 @@ async function handleEvent(
 export async function processTelegramUpdate(update: TelegramUpdate): Promise<void> {
   const event = getIncomingEvent(update);
   if (!event) return;
+  const isCommand = event.text?.trim().startsWith("/") ?? false;
+  const isGroupMessage = event.chatType !== "private";
+  if (
+    isGroupMessage &&
+    !isCommand &&
+    !event.callbackData &&
+    event.newChatMembers.length === 0
+  ) {
+    return;
+  }
 
   await db.transaction(async (tx) => {
     const [inserted] = await tx

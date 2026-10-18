@@ -3,6 +3,7 @@ import {
   integer,
   jsonb,
   pgTable,
+  primaryKey,
   serial,
   text,
   timestamp,
@@ -23,29 +24,36 @@ export type InlineKeyboardMarkup = {
   >;
 };
 
-export const telegramPlayersTable = pgTable("telegram_players", {
-  telegramId: text("telegram_id").primaryKey(),
-  username: text("username"),
-  characterName: text("character_name").notNull(),
-  archetype: text("archetype").notNull(),
-  level: integer("level").notNull().default(1),
-  xp: integer("xp").notNull().default(0),
-  hp: integer("hp").notNull(),
-  maxHp: integer("max_hp").notNull(),
-  attack: integer("attack").notNull(),
-  defense: integer("defense").notNull(),
-  potions: integer("potions").notNull().default(2),
-  coins: integer("coins").notNull().default(0),
-  location: text("location").notNull().default("bosco"),
-  combat: jsonb("combat").$type<CombatState | null>(),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
-    .defaultNow(),
-  updatedAt: timestamp("updated_at", { withTimezone: true })
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
+export const telegramPlayersTable = pgTable(
+  "telegram_players",
+  {
+    telegramId: text("telegram_id").notNull(),
+    chatId: text("chat_id").notNull(),
+    username: text("username"),
+    characterName: text("character_name").notNull(),
+    archetype: text("archetype").notNull().default("Nessuna"),
+    level: integer("level").notNull().default(0),
+    xp: integer("xp").notNull().default(0),
+    hp: integer("hp").notNull().default(20),
+    maxHp: integer("max_hp").notNull().default(20),
+    attack: integer("attack").notNull().default(4),
+    defense: integer("defense").notNull().default(1),
+    potions: integer("potions").notNull().default(2),
+    coins: integer("coins").notNull().default(10),
+    biomeId: integer("biome_id").notNull().default(1),
+    combat: jsonb("combat").$type<CombatState | null>(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    primaryKey({ columns: [table.telegramId, table.chatId] }),
+  ],
+);
 
 export const insertTelegramPlayerSchema = createInsertSchema(
   telegramPlayersTable,

@@ -4,7 +4,7 @@ Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esp
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server and Telegram bot (port 8080)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -30,11 +30,12 @@ Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esp
 
 - The bot uses Telegram long polling so local development does not require a public webhook URL.
 - Game updates and outgoing replies are stored in PostgreSQL; a transactional outbox prevents duplicate game actions on Telegram retries.
+- Each character save is scoped to both the Telegram user and the chat, so the same player can have different characters in different groups.
 
 ## Product
 
-- Players choose a class, explore three regions, fight enemies in turn-based combat, collect coins and healing potions, and gain levels.
-- Characters are saved per Telegram user. Play in a private chat with the bot.
+- Players are automatically given a level-0 character with no class in Emerald Grove; they can choose a class, explore, fight, collect items, and level up.
+- Characters are saved per Telegram user and chat. Commands, button interactions, and new-member events create group-scoped saves.
 
 ## User preferences
 

@@ -2,6 +2,7 @@ export type TelegramUser = {
   id: number;
   first_name?: string;
   username?: string;
+  is_bot?: boolean;
 };
 
 export type TelegramChat = {
@@ -13,6 +14,7 @@ export type TelegramMessage = {
   chat: TelegramChat;
   from?: TelegramUser;
   text?: string;
+  new_chat_members?: TelegramUser[];
 };
 
 export type TelegramUpdate = {
