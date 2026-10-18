@@ -1,0 +1,1911 @@
+[
+  {
+    "item_id": "wpn_t1_11",
+    "name": "Hunting Bow",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 5,
+      "crit_rate": 0.03
+    }
+  },
+  {
+    "item_id": "wpn_t1_12",
+    "name": "Hand Axe",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 10,
+      "def": -1
+    }
+  },
+  {
+    "item_id": "wpn_t1_13",
+    "name": "Wooden Mace",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 6,
+      "hp": 5
+    }
+  },
+  {
+    "item_id": "wpn_t2_11",
+    "name": "Oak Longbow",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 10,
+      "crit_rate": 0.06
+    }
+  },
+  {
+    "item_id": "wpn_t2_12",
+    "name": "Stone Axe",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 20,
+      "def": -2
+    }
+  },
+  {
+    "item_id": "wpn_t2_13",
+    "name": "Stone Mace",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 12,
+      "hp": 10
+    }
+  },
+  {
+    "item_id": "wpn_t3_11",
+    "name": "Ranger's Longbow",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 18,
+      "crit_rate": 0.1
+    }
+  },
+  {
+    "item_id": "wpn_t3_12",
+    "name": "Iron Battleaxe",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 34,
+      "def": -3
+    }
+  },
+  {
+    "item_id": "wpn_t3_13",
+    "name": "Iron Warhammer",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 21,
+      "hp": 18
+    }
+  },
+  {
+    "item_id": "wpn_t4_11",
+    "name": "Stormcaller Bow",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 25,
+      "crit_rate": 0.13
+    }
+  },
+  {
+    "item_id": "wpn_t4_12",
+    "name": "Berserker Axe",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 46,
+      "def": -4
+    }
+  },
+  {
+    "item_id": "wpn_t4_13",
+    "name": "Crusader Mace",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 28,
+      "hp": 25
+    }
+  },
+  {
+    "item_id": "wpn_t4_21",
+    "name": "Windpiercer",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 36,
+      "crit_rate": 0.16
+    }
+  },
+  {
+    "item_id": "wpn_t4_22",
+    "name": "Titan's Cleaver",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 62,
+      "def": -5
+    }
+  },
+  {
+    "item_id": "wpn_t4_23",
+    "name": "Dawnbreaker",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 38,
+      "hp": 35
+    }
+  },
+  {
+    "item_id": "arm_t1_11",
+    "name": "Leather Vest",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 1,
+      "hp": 10,
+      "crit_rate": 0.02
+    }
+  },
+  {
+    "item_id": "arm_t1_12",
+    "name": "Padded Mail",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 10
+    }
+  },
+  {
+    "item_id": "arm_t1_13",
+    "name": "Bark Plate",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 4,
+      "atk": -1,
+      "hp": 5
+    }
+  },
+  {
+    "item_id": "arm_t2_11",
+    "name": "Hardened Leather",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 3,
+      "hp": 18,
+      "crit_rate": 0.03
+    }
+  },
+  {
+    "item_id": "arm_t2_12",
+    "name": "Studded Mail",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 4,
+      "hp": 20
+    }
+  },
+  {
+    "item_id": "arm_t2_13",
+    "name": "Stone Plate",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 7,
+      "atk": -2,
+      "hp": 10
+    }
+  },
+  {
+    "item_id": "arm_t3_11",
+    "name": "Shadowhide Cloak",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 5,
+      "hp": 32,
+      "crit_rate": 0.05
+    }
+  },
+  {
+    "item_id": "arm_t3_12",
+    "name": "Iron Chainmail",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 7,
+      "hp": 35
+    }
+  },
+  {
+    "item_id": "arm_t3_13",
+    "name": "Iron Plate",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 12,
+      "atk": -3,
+      "hp": 18
+    }
+  },
+  {
+    "item_id": "arm_t4_11",
+    "name": "Nightstalker Garb",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 7,
+      "hp": 42,
+      "crit_rate": 0.07
+    }
+  },
+  {
+    "item_id": "arm_t4_12",
+    "name": "Dragonscale Mail",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 10,
+      "hp": 45
+    }
+  },
+  {
+    "item_id": "arm_t4_13",
+    "name": "Obsidian Plate",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 16,
+      "atk": -4,
+      "hp": 24
+    }
+  },
+  {
+    "item_id": "arm_t4_21",
+    "name": "Phantom Shroud",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 10,
+      "hp": 60,
+      "crit_rate": 0.08
+    }
+  },
+  {
+    "item_id": "arm_t4_22",
+    "name": "Aegis Hauberk",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 13,
+      "hp": 65
+    }
+  },
+  {
+    "item_id": "arm_t4_23",
+    "name": "Titan Bulwark",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 22,
+      "atk": -6,
+      "hp": 32
+    }
+  },
+  {
+    "item_id": "arm_t1_14",
+    "name": "Wooden Shield",
+    "type": "Off-Hand",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 5
+    },
+    "passive_or_effect": "Unlocks the Defense combat action: 30% chance to block all incoming damage, otherwise take half damage."
+  },
+  {
+    "item_id": "wpn_t1_n101",
+    "name": "Recruit’s Shortsword",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 5,
+      "crit_rate": 0.01
+    }
+  },
+  {
+    "item_id": "wpn_t1_n102",
+    "name": "Cracked Oak Staff",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 4,
+      "mp": 5
+    }
+  },
+  {
+    "item_id": "wpn_t1_n103",
+    "name": "Flint Hatchet",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 6,
+      "def": -1
+    }
+  },
+  {
+    "item_id": "wpn_t1_n104",
+    "name": "Sling of Pebbles",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 4,
+      "crit_rate": 0.025
+    }
+  },
+  {
+    "item_id": "wpn_t1_n105",
+    "name": "Rusty Spear",
+    "type": "Weapons",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "atk": 6,
+      "hp": 3
+    }
+  },
+  {
+    "item_id": "wpn_t2_n201",
+    "name": "Guard’s Saber",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 9,
+      "crit_rate": 0.01
+    }
+  },
+  {
+    "item_id": "wpn_t2_n202",
+    "name": "Runed Birch Wand",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 7,
+      "mp": 9
+    }
+  },
+  {
+    "item_id": "wpn_t2_n203",
+    "name": "Hunter’s Hatchet",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 11,
+      "def": -1
+    }
+  },
+  {
+    "item_id": "wpn_t2_n204",
+    "name": "Reinforced Sling",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 8,
+      "crit_rate": 0.045
+    }
+  },
+  {
+    "item_id": "wpn_t2_n205",
+    "name": "Iron-Tipped Spear",
+    "type": "Weapons",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "atk": 10,
+      "hp": 5
+    }
+  },
+  {
+    "item_id": "wpn_t3_n301",
+    "name": "Knightfall Blade",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 14,
+      "crit_rate": 0.01
+    }
+  },
+  {
+    "item_id": "wpn_t3_n302",
+    "name": "Moonstone Staff",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 11,
+      "mp": 14
+    }
+  },
+  {
+    "item_id": "wpn_t3_n303",
+    "name": "Ravager Greataxe",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 17,
+      "def": -1
+    }
+  },
+  {
+    "item_id": "wpn_t3_n304",
+    "name": "Eagle-Eye Crossbow",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 13,
+      "crit_rate": 0.07
+    }
+  },
+  {
+    "item_id": "wpn_t3_n305",
+    "name": "Storm Pike",
+    "type": "Weapons",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "atk": 15,
+      "hp": 8
+    }
+  },
+  {
+    "item_id": "wpn_t4_n401",
+    "name": "Emberbrand",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 19,
+      "crit_rate": 0.01
+    }
+  },
+  {
+    "item_id": "wpn_t4_n402",
+    "name": "Astral Scepter",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 15,
+      "mp": 19
+    }
+  },
+  {
+    "item_id": "wpn_t4_n403",
+    "name": "Wyrmbreaker Axe",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 23,
+      "def": -2
+    }
+  },
+  {
+    "item_id": "wpn_t4_n404",
+    "name": "Tempest Repeater",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 17,
+      "crit_rate": 0.095
+    }
+  },
+  {
+    "item_id": "wpn_t4_n405",
+    "name": "Glacier Lance",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 21,
+      "hp": 11
+    }
+  },
+  {
+    "item_id": "wpn_t4_n501",
+    "name": "Sunforged Edge",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 22,
+      "crit_rate": 0.01
+    }
+  },
+  {
+    "item_id": "wpn_t4_n502",
+    "name": "Staff of the First Star",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 18,
+      "mp": 22
+    }
+  },
+  {
+    "item_id": "wpn_t4_n503",
+    "name": "Worldsplitter",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 27,
+      "def": -2
+    }
+  },
+  {
+    "item_id": "wpn_t4_n504",
+    "name": "Phoenix Longbow",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 20,
+      "crit_rate": 0.112
+    }
+  },
+  {
+    "item_id": "wpn_t4_n505",
+    "name": "Spear of Eternity",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 25,
+      "hp": 13
+    }
+  },
+  {
+    "item_id": "arm_t1_n101",
+    "name": "Patched Gambeson",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 8
+    }
+  },
+  {
+    "item_id": "arm_t1_n102",
+    "name": "Traveler’s Hood",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 7,
+      "mp": 4
+    }
+  },
+  {
+    "item_id": "arm_t1_n103",
+    "name": "Tin Buckler Vest",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 3,
+      "hp": 5,
+      "atk": -1
+    }
+  },
+  {
+    "item_id": "arm_t1_n104",
+    "name": "Woolen Battlecoat",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 6,
+      "crit_rate": 0.008
+    }
+  },
+  {
+    "item_id": "arm_t1_n105",
+    "name": "Scavenger’s Leathers",
+    "type": "Armors",
+    "tier": 1,
+    "rarity": "Common",
+    "stats": {
+      "def": 2,
+      "hp": 9
+    }
+  },
+  {
+    "item_id": "arm_t2_n201",
+    "name": "Ironweave Jerkin",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 4,
+      "hp": 14
+    }
+  },
+  {
+    "item_id": "arm_t2_n202",
+    "name": "Warden’s Mantle",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 3,
+      "hp": 13,
+      "mp": 7
+    }
+  },
+  {
+    "item_id": "arm_t2_n203",
+    "name": "Scalehide Cuirass",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 5,
+      "hp": 9,
+      "atk": -1
+    }
+  },
+  {
+    "item_id": "arm_t2_n204",
+    "name": "Runeguard Robe",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 4,
+      "hp": 11,
+      "crit_rate": 0.014
+    }
+  },
+  {
+    "item_id": "arm_t2_n205",
+    "name": "Reinforced Ranger Coat",
+    "type": "Armors",
+    "tier": 2,
+    "rarity": "Uncommon",
+    "stats": {
+      "def": 4,
+      "hp": 16
+    }
+  },
+  {
+    "item_id": "arm_t3_n301",
+    "name": "Sentinel Plate",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 6,
+      "hp": 22
+    }
+  },
+  {
+    "item_id": "arm_t3_n302",
+    "name": "Duskwalker Shroud",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 4,
+      "hp": 20,
+      "mp": 11
+    }
+  },
+  {
+    "item_id": "arm_t3_n303",
+    "name": "Bastion Hauberk",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 8,
+      "hp": 14,
+      "atk": -1
+    }
+  },
+  {
+    "item_id": "arm_t3_n304",
+    "name": "Sapphire Wardrobe",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 6,
+      "hp": 17,
+      "crit_rate": 0.022
+    }
+  },
+  {
+    "item_id": "arm_t3_n305",
+    "name": "Drakehide Armor",
+    "type": "Armors",
+    "tier": 3,
+    "rarity": "Rare",
+    "stats": {
+      "def": 7,
+      "hp": 25
+    }
+  },
+  {
+    "item_id": "arm_t4_n401",
+    "name": "Aegis of Embers",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 8,
+      "hp": 30
+    }
+  },
+  {
+    "item_id": "arm_t4_n402",
+    "name": "Nightveil Raiment",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 6,
+      "hp": 27,
+      "mp": 15
+    }
+  },
+  {
+    "item_id": "arm_t4_n403",
+    "name": "Titanforged Cuirass",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 11,
+      "hp": 19,
+      "atk": -2
+    }
+  },
+  {
+    "item_id": "arm_t4_n404",
+    "name": "Tempestguard Mail",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 8,
+      "hp": 23,
+      "crit_rate": 0.03
+    }
+  },
+  {
+    "item_id": "arm_t4_n405",
+    "name": "Frostheart Mantle",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Epic",
+    "stats": {
+      "def": 10,
+      "hp": 34
+    }
+  },
+  {
+    "item_id": "arm_t4_n501",
+    "name": "Crown of the Sun King",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 9,
+      "hp": 36
+    }
+  },
+  {
+    "item_id": "arm_t4_n502",
+    "name": "Umbral Sovereign Armor",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 7,
+      "hp": 31,
+      "mp": 18
+    }
+  },
+  {
+    "item_id": "arm_t4_n503",
+    "name": "Worldroot Aegis",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 13,
+      "hp": 22,
+      "atk": -2
+    }
+  },
+  {
+    "item_id": "arm_t4_n504",
+    "name": "Celestial Bulwark",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 9,
+      "hp": 27,
+      "crit_rate": 0.036
+    }
+  },
+  {
+    "item_id": "arm_t4_n505",
+    "name": "Armor of the Last Dawn",
+    "type": "Armors",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 11,
+      "hp": 40
+    }
+  },
+  {
+    "item_id": "orb_class_duelist",
+    "name": "Duelist Sigil",
+    "type": "ClassOrb",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "class_id": "duelist"
+    },
+    "passive_or_effect": "Passive: +12% critical-hit chance."
+  },
+  {
+    "item_id": "orb_class_warden",
+    "name": "Warden Core",
+    "type": "ClassOrb",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "class_id": "warden"
+    },
+    "passive_or_effect": "Passive: take 3 less damage from enemy attacks (minimum 1)."
+  },
+  {
+    "item_id": "orb_class_bloodweaver",
+    "name": "Bloodweaver Heart",
+    "type": "ClassOrb",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "class_id": "bloodweaver"
+    },
+    "passive_or_effect": "Passive: restore up to 3 HP whenever you attack."
+  },
+  {
+    "item_id": "orb_class_stormcaller",
+    "name": "Stormcaller Prism",
+    "type": "ClassOrb",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "class_id": "stormcaller"
+    },
+    "passive_or_effect": "Passive: deal 35% more damage while at 40% HP or lower."
+  },
+  {
+    "item_id": "orb_class_voidstalker",
+    "name": "Voidstalker Relic",
+    "type": "ClassOrb",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "class_id": "voidstalker"
+    },
+    "passive_or_effect": "Passive: 18% chance to deal 75% bonus damage on an attack."
+  },
+  {
+    "item_id": "orb_class_phoenixborn",
+    "name": "Phoenixborn Ember",
+    "type": "ClassOrb",
+    "tier": 4,
+    "rarity": "Mythic",
+    "stats": {
+      "class_id": "phoenixborn"
+    },
+    "passive_or_effect": "Passive: 35% chance to survive a fatal enemy hit with 1 HP."
+  },
+  {
+    "item_id": "cons_0_01",
+    "name": "Trail Bread",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 8
+    },
+    "passive_or_effect": "A simple loaf that restores 8 HP."
+  },
+  {
+    "item_id": "cons_0_02",
+    "name": "Berry Mix",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 5
+    },
+    "passive_or_effect": "Sweet berries restore 5 HP."
+  },
+  {
+    "item_id": "cons_0_03",
+    "name": "Minor Tonic",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 12
+    },
+    "passive_or_effect": "A small healing tonic restores 12 HP."
+  },
+  {
+    "item_id": "cons_0_04",
+    "name": "Smoked Jerky",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 6
+    },
+    "passive_or_effect": "A hearty snack restores 6 HP."
+  },
+  {
+    "item_id": "cons_0_05",
+    "name": "Peppermint Draught",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 7
+    },
+    "passive_or_effect": "A refreshing draught restores 7 HP."
+  },
+  {
+    "item_id": "cons_0_06",
+    "name": "Pocket Sand",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "damage",
+      "power": 5
+    },
+    "passive_or_effect": "Throw grit at your foe for 5 damage."
+  },
+  {
+    "item_id": "cons_0_07",
+    "name": "Spark Powder",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "damage",
+      "power": 7
+    },
+    "passive_or_effect": "A pinch of powder bursts for 7 damage."
+  },
+  {
+    "item_id": "cons_0_08",
+    "name": "Lucky Biscuit",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "coins",
+      "power": 5
+    },
+    "passive_or_effect": "A lucky bite somehow attracts 5 coins."
+  },
+  {
+    "item_id": "cons_0_09",
+    "name": "Field Rations",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 10
+    },
+    "passive_or_effect": "Compact rations restore 10 HP."
+  },
+  {
+    "item_id": "cons_0_10",
+    "name": "Bitter Root",
+    "type": "Consumables",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "effect": "heal",
+      "power": 9
+    },
+    "passive_or_effect": "Chew the bitter root to recover 9 HP."
+  },
+  {
+    "item_id": "cons_1_01",
+    "name": "Hearty Stew",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "heal",
+      "power": 18
+    },
+    "passive_or_effect": "A warm stew restores 18 HP."
+  },
+  {
+    "item_id": "cons_1_02",
+    "name": "Ironhide Brew",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "defense",
+      "power": 2
+    },
+    "passive_or_effect": "Reduce the next incoming hit by 2 damage."
+  },
+  {
+    "item_id": "cons_1_03",
+    "name": "Swiftstep Tea",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "attack",
+      "power": 5
+    },
+    "passive_or_effect": "Your next attack deals 5 bonus damage."
+  },
+  {
+    "item_id": "cons_1_04",
+    "name": "Blazing Pepper",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "damage",
+      "power": 14
+    },
+    "passive_or_effect": "Spicy powder scorches an enemy for 14 damage."
+  },
+  {
+    "item_id": "cons_1_05",
+    "name": "Moonberry Tart",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "heal",
+      "power": 15
+    },
+    "passive_or_effect": "Moonberries restore 15 HP."
+  },
+  {
+    "item_id": "cons_1_06",
+    "name": "Scout Flare",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "damage",
+      "power": 12
+    },
+    "passive_or_effect": "A flare explodes for 12 damage."
+  },
+  {
+    "item_id": "cons_1_07",
+    "name": "Lucky Clover Candy",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "coins",
+      "power": 12
+    },
+    "passive_or_effect": "A lucky sweet grants 12 coins."
+  },
+  {
+    "item_id": "cons_1_08",
+    "name": "Focus Elixir",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "xp",
+      "power": 12
+    },
+    "passive_or_effect": "A focused mind grants 12 XP."
+  },
+  {
+    "item_id": "cons_1_09",
+    "name": "Medicinal Poultice",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "heal",
+      "power": 20
+    },
+    "passive_or_effect": "A herbal poultice restores 20 HP."
+  },
+  {
+    "item_id": "cons_1_10",
+    "name": "Bottled Mist",
+    "type": "Consumables",
+    "tier": 1,
+    "rarity": "Uncommon",
+    "stats": {
+      "effect": "escape",
+      "power": 0
+    },
+    "passive_or_effect": "A veil of mist guarantees a safe escape from combat."
+  },
+  {
+    "item_id": "cons_2_01",
+    "name": "Dragonpepper Curry",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "heal",
+      "power": 28
+    },
+    "passive_or_effect": "A fiery meal restores 28 HP."
+  },
+  {
+    "item_id": "cons_2_02",
+    "name": "Thunder Flask",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "damage",
+      "power": 28
+    },
+    "passive_or_effect": "A captured thunderbolt deals 28 damage."
+  },
+  {
+    "item_id": "cons_2_03",
+    "name": "Berserker Serum",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "attack",
+      "power": 12
+    },
+    "passive_or_effect": "Your next attack deals 12 bonus damage."
+  },
+  {
+    "item_id": "cons_2_04",
+    "name": "Stoneblood Tonic",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "defense",
+      "power": 5
+    },
+    "passive_or_effect": "Reduce the next incoming hit by 5 damage."
+  },
+  {
+    "item_id": "cons_2_05",
+    "name": "Golden Fig",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "coins",
+      "power": 30
+    },
+    "passive_or_effect": "A mythical fruit yields 30 coins."
+  },
+  {
+    "item_id": "cons_2_06",
+    "name": "Scholar’s Nectar",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "xp",
+      "power": 30
+    },
+    "passive_or_effect": "A drop of nectar grants 30 XP."
+  },
+  {
+    "item_id": "cons_2_07",
+    "name": "Phoenix Broth",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "heal",
+      "power": 35
+    },
+    "passive_or_effect": "A rare broth restores 35 HP."
+  },
+  {
+    "item_id": "cons_2_08",
+    "name": "Frost Bomb",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "damage",
+      "power": 24
+    },
+    "passive_or_effect": "A frost bomb deals 24 damage."
+  },
+  {
+    "item_id": "cons_2_09",
+    "name": "Shadow Smoke Pellet",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "escape",
+      "power": 0
+    },
+    "passive_or_effect": "Vanish from combat without risking a failed escape."
+  },
+  {
+    "item_id": "cons_2_10",
+    "name": "Vitality Dumpling",
+    "type": "Consumables",
+    "tier": 2,
+    "rarity": "Rare",
+    "stats": {
+      "effect": "heal",
+      "power": 25
+    },
+    "passive_or_effect": "A magically stuffed dumpling restores 25 HP."
+  },
+  {
+    "item_id": "cons_3_01",
+    "name": "Sunfire Roast",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "heal",
+      "power": 45
+    },
+    "passive_or_effect": "Sunfire spices restore 45 HP."
+  },
+  {
+    "item_id": "cons_3_02",
+    "name": "Stormglass Grenade",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "damage",
+      "power": 45
+    },
+    "passive_or_effect": "A stormglass grenade deals 45 damage."
+  },
+  {
+    "item_id": "cons_3_03",
+    "name": "Titan’s Protein Elixir",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "attack",
+      "power": 22
+    },
+    "passive_or_effect": "Your next attack deals 22 bonus damage."
+  },
+  {
+    "item_id": "cons_3_04",
+    "name": "Aegis Phial",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "defense",
+      "power": 9
+    },
+    "passive_or_effect": "Reduce the next incoming hit by 9 damage."
+  },
+  {
+    "item_id": "cons_3_05",
+    "name": "Royal Feast Token",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "coins",
+      "power": 65
+    },
+    "passive_or_effect": "Redeem this token for 65 coins."
+  },
+  {
+    "item_id": "cons_3_06",
+    "name": "Memory Orchid",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "xp",
+      "power": 65
+    },
+    "passive_or_effect": "Its fragrance grants 65 XP."
+  },
+  {
+    "item_id": "cons_3_07",
+    "name": "Phoenix Heart Soup",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "heal",
+      "power": 55
+    },
+    "passive_or_effect": "A legendary recipe restores 55 HP."
+  },
+  {
+    "item_id": "cons_3_08",
+    "name": "Voidfire Bomb",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "damage",
+      "power": 55
+    },
+    "passive_or_effect": "Unstable voidfire deals 55 damage."
+  },
+  {
+    "item_id": "cons_3_09",
+    "name": "Clockwork Escape Charm",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "escape",
+      "power": 0
+    },
+    "passive_or_effect": "Warp safely away from your current enemy."
+  },
+  {
+    "item_id": "cons_3_10",
+    "name": "Elixir of Second Wind",
+    "type": "Consumables",
+    "tier": 3,
+    "rarity": "Epic",
+    "stats": {
+      "effect": "heal",
+      "power": 40
+    },
+    "passive_or_effect": "A powerful elixir restores 40 HP."
+  },
+  {
+    "item_id": "cons_4_01",
+    "name": "Feast of the Worldtree",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "heal",
+      "power": 75
+    },
+    "passive_or_effect": "A divine meal restores 75 HP."
+  },
+  {
+    "item_id": "cons_4_02",
+    "name": "Starfall Charge",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "damage",
+      "power": 85
+    },
+    "passive_or_effect": "A shard of a falling star deals 85 damage."
+  },
+  {
+    "item_id": "cons_4_03",
+    "name": "Demonbane Philter",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "attack",
+      "power": 40
+    },
+    "passive_or_effect": "Your next attack deals 40 bonus damage."
+  },
+  {
+    "item_id": "cons_4_04",
+    "name": "Adamant Aegis Oil",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "defense",
+      "power": 15
+    },
+    "passive_or_effect": "Reduce the next incoming hit by 15 damage."
+  },
+  {
+    "item_id": "cons_4_05",
+    "name": "Midas Nectar",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "coins",
+      "power": 150
+    },
+    "passive_or_effect": "Turn a sip of nectar into 150 coins."
+  },
+  {
+    "item_id": "cons_4_06",
+    "name": "Chronicle of Ages",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "xp",
+      "power": 150
+    },
+    "passive_or_effect": "A page of lost history grants 150 XP."
+  },
+  {
+    "item_id": "cons_4_07",
+    "name": "Phoenix Crown Broth",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "heal",
+      "power": 100
+    },
+    "passive_or_effect": "A mythical broth restores 100 HP."
+  },
+  {
+    "item_id": "cons_4_08",
+    "name": "Abyssal Singularity",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "damage",
+      "power": 110
+    },
+    "passive_or_effect": "A tiny singularity deals 110 damage."
+  },
+  {
+    "item_id": "cons_4_09",
+    "name": "Phantom Gate Seal",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "escape",
+      "power": 0
+    },
+    "passive_or_effect": "Open a gate and leave combat safely."
+  },
+  {
+    "item_id": "cons_4_10",
+    "name": "Ambrosia of Rebirth",
+    "type": "Consumables",
+    "tier": 4,
+    "rarity": "Legendary",
+    "stats": {
+      "effect": "heal",
+      "power": 90
+    },
+    "passive_or_effect": "Ambrosia restores 90 HP."
+  },
+  {
+    "item_id": "orb_class_warrior",
+    "name": "Warrior Orb",
+    "type": "ClassOrb",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "class_id": "warrior"
+    },
+    "passive_or_effect": "Passive: once per combat, reduce the first incoming hit by 25%. Bonus stats: +10 HP, +2 ATK, +2 DEF."
+  },
+  {
+    "item_id": "orb_class_explorer",
+    "name": "Explorer Orb",
+    "type": "ClassOrb",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "class_id": "explorer"
+    },
+    "passive_or_effect": "Passive: gain +10% coins from exploration and a 5% chance to avoid an enemy attack. Bonus stats: +4 HP, +3 ATK, +1 DEF."
+  },
+  {
+    "item_id": "orb_class_arcanist",
+    "name": "Arcanist Orb",
+    "type": "ClassOrb",
+    "tier": 0,
+    "rarity": "Common",
+    "stats": {
+      "class_id": "arcanist"
+    },
+    "passive_or_effect": "Passive: 15% chance to deal 25% bonus magic damage on an attack. Bonus stats: +0 HP, +6 ATK, +0 DEF."
+  },
+  {
+    "item_id": "orb_class_abyssal",
+    "name": "Abyssal Orb",
+    "type": "ClassOrb",
+    "tier": 0,
+    "rarity": "Mythic",
+    "stats": {
+      "class_id": "abyssal"
+    },
+    "passive_or_effect": "Passive: 12% chance to unleash an Abyssal Rift, dealing 60% bonus damage and restoring 2 HP. Bonus stats: +8 HP, +8 ATK, +3 DEF."
+  },
+  {
+    "item_id": "orb_class_seraphim",
+    "name": "Seraphim Orb",
+    "type": "ClassOrb",
+    "tier": 5,
+    "rarity": "Mythic",
+    "stats": {
+      "class_id": "seraphim"
+    },
+    "passive_or_effect": "Passive: Seraphic Grace — 10% chance to unleash a radiant strike dealing 50% bonus damage and restore 3 HP."
+  },
+  {
+    "item_id": "orb_class_necromancer",
+    "name": "Necromancer Orb",
+    "type": "ClassOrb",
+    "tier": 5,
+    "rarity": "Legendary",
+    "stats": {
+      "class_id": "necromancer"
+    },
+    "passive_or_effect": "Passive: Soul Shard — 12% chance to deal 45% bonus damage and restore 2 HP. Bonus stats: +6 HP, +5 ATK, +2 DEF."
+  },
+  {
+    "item_id": "wpn_boss_frustas_cazzone_puzzone",
+    "name": "Cazzone Puzzone",
+    "type": "Weapons",
+    "tier": 4,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 25,
+      "mp": 25,
+      "hp": 10,
+      "def": 5,
+      "double_hit_chance": 0.1
+    },
+    "passive_or_effect": "10% chance to strike the target twice with one attack."
+  },
+  {
+    "item_id": "wpn_zone11_01",
+    "name": "Infernal Edge",
+    "type": "Weapons",
+    "tier": 5,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 35,
+      "crit_rate": 0.04
+    },
+    "passive_or_effect": "A weapon tempered in the infernal region."
+  },
+  {
+    "item_id": "arm_zone11_01",
+    "name": "Infernal Wardplate",
+    "type": "Armors",
+    "tier": 5,
+    "rarity": "Epic",
+    "stats": {
+      "def": 18,
+      "hp": 80
+    },
+    "passive_or_effect": "Armor forged to withstand the infernal region."
+  },
+  {
+    "item_id": "wpn_boss_zone11",
+    "name": "Infernal Sovereign Relic",
+    "type": "Weapons",
+    "tier": 6,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 60,
+      "crit_rate": 0.08,
+      "double_hit_chance": 0.03
+    },
+    "passive_or_effect": "A mythic trophy taken from the ruler of 🌋 Infernal Crucible."
+  },
+  {
+    "item_id": "arm_boss_zone11",
+    "name": "Infernal Aegis",
+    "type": "Armors",
+    "tier": 6,
+    "rarity": "Mythic",
+    "stats": {
+      "def": 32,
+      "hp": 180
+    },
+    "passive_or_effect": "A mythic aegis claimed from the ruler of 🌋 Infernal Crucible."
+  },
+  {
+    "item_id": "wpn_zone12_01",
+    "name": "Astral Edge",
+    "type": "Weapons",
+    "tier": 6,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 47,
+      "crit_rate": 0.05
+    },
+    "passive_or_effect": "A weapon tempered in the astral region."
+  },
+  {
+    "item_id": "arm_zone12_01",
+    "name": "Astral Wardplate",
+    "type": "Armors",
+    "tier": 6,
+    "rarity": "Epic",
+    "stats": {
+      "def": 25,
+      "hp": 120
+    },
+    "passive_or_effect": "Armor forged to withstand the astral region."
+  },
+  {
+    "item_id": "wpn_boss_zone12",
+    "name": "Astral Sovereign Relic",
+    "type": "Weapons",
+    "tier": 7,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 72,
+      "crit_rate": 0.08,
+      "double_hit_chance": 0.04
+    },
+    "passive_or_effect": "A mythic trophy taken from the ruler of 🌌 Astral Expanse."
+  },
+  {
+    "item_id": "arm_boss_zone12",
+    "name": "Astral Aegis",
+    "type": "Armors",
+    "tier": 7,
+    "rarity": "Mythic",
+    "stats": {
+      "def": 39,
+      "hp": 250
+    },
+    "passive_or_effect": "A mythic aegis claimed from the ruler of 🌌 Astral Expanse."
+  },
+  {
+    "item_id": "wpn_zone13_01",
+    "name": "Worldroot Edge",
+    "type": "Weapons",
+    "tier": 7,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 59,
+      "crit_rate": 0.06
+    },
+    "passive_or_effect": "A weapon tempered in the worldroot region."
+  },
+  {
+    "item_id": "arm_zone13_01",
+    "name": "Worldroot Wardplate",
+    "type": "Armors",
+    "tier": 7,
+    "rarity": "Epic",
+    "stats": {
+      "def": 32,
+      "hp": 160
+    },
+    "passive_or_effect": "Armor forged to withstand the worldroot region."
+  },
+  {
+    "item_id": "wpn_boss_zone13",
+    "name": "Worldroot Sovereign Relic",
+    "type": "Weapons",
+    "tier": 8,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 84,
+      "crit_rate": 0.08,
+      "double_hit_chance": 0.05
+    },
+    "passive_or_effect": "A mythic trophy taken from the ruler of 🌿 Worldroot Sanctum."
+  },
+  {
+    "item_id": "arm_boss_zone13",
+    "name": "Worldroot Aegis",
+    "type": "Armors",
+    "tier": 8,
+    "rarity": "Mythic",
+    "stats": {
+      "def": 46,
+      "hp": 320
+    },
+    "passive_or_effect": "A mythic aegis claimed from the ruler of 🌿 Worldroot Sanctum."
+  },
+  {
+    "item_id": "wpn_zone14_01",
+    "name": "Chrono Edge",
+    "type": "Weapons",
+    "tier": 8,
+    "rarity": "Epic",
+    "stats": {
+      "atk": 71,
+      "crit_rate": 0.07
+    },
+    "passive_or_effect": "A weapon tempered in the chrono region."
+  },
+  {
+    "item_id": "arm_zone14_01",
+    "name": "Chrono Wardplate",
+    "type": "Armors",
+    "tier": 8,
+    "rarity": "Epic",
+    "stats": {
+      "def": 39,
+      "hp": 200
+    },
+    "passive_or_effect": "Armor forged to withstand the chrono region."
+  },
+  {
+    "item_id": "wpn_boss_zone14",
+    "name": "Chrono Sovereign Relic",
+    "type": "Weapons",
+    "tier": 9,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 96,
+      "crit_rate": 0.08,
+      "double_hit_chance": 0.06
+    },
+    "passive_or_effect": "A mythic trophy taken from the ruler of ⚙️ Chrono-Forged Citadel."
+  },
+  {
+    "item_id": "arm_boss_zone14",
+    "name": "Chrono Aegis",
+    "type": "Armors",
+    "tier": 9,
+    "rarity": "Mythic",
+    "stats": {
+      "def": 53,
+      "hp": 390
+    },
+    "passive_or_effect": "A mythic aegis claimed from the ruler of ⚙️ Chrono-Forged Citadel."
+  },
+  {
+    "item_id": "wpn_zone15_01",
+    "name": "Zenith Edge",
+    "type": "Weapons",
+    "tier": 9,
+    "rarity": "Legendary",
+    "stats": {
+      "atk": 83,
+      "crit_rate": 0.08
+    },
+    "passive_or_effect": "A weapon tempered in the zenith region."
+  },
+  {
+    "item_id": "arm_zone15_01",
+    "name": "Zenith Wardplate",
+    "type": "Armors",
+    "tier": 9,
+    "rarity": "Legendary",
+    "stats": {
+      "def": 46,
+      "hp": 240
+    },
+    "passive_or_effect": "Armor forged to withstand the zenith region."
+  },
+  {
+    "item_id": "wpn_boss_zone15",
+    "name": "Zenith Sovereign Relic",
+    "type": "Weapons",
+    "tier": 10,
+    "rarity": "Mythic",
+    "stats": {
+      "atk": 108,
+      "crit_rate": 0.08,
+      "double_hit_chance": 0.07
+    },
+    "passive_or_effect": "A mythic trophy taken from the ruler of ☀️ Celestial Zenith."
+  },
+  {
+    "item_id": "arm_boss_zone15",
+    "name": "Zenith Aegis",
+    "type": "Armors",
+    "tier": 10,
+    "rarity": "Mythic",
+    "stats": {
+      "def": 60,
+      "hp": 460
+    },
+    "passive_or_effect": "A mythic aegis claimed from the ruler of ☀️ Celestial Zenith."
+  }
+]

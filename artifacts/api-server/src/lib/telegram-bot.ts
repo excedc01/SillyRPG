@@ -1,13 +1,57 @@
 import { logger } from "./logger";
 import {
+  clearOutboxMessageId,
+  getLobbyMessageId,
   getPendingOutboxMessages,
+  getSupersededMessages,
   markOutboxMessageSent,
+  processDueLobbies,
   processTelegramUpdate,
+  setLobbyMessageId,
 } from "./telegram-game";
 import type { TelegramCallbackAnswer, TelegramUpdate } from "./telegram-types";
+import type { TelegramOutboxMessage } from "@workspace/db";
 
 const apiBase = "https://api.telegram.org";
 const pollingTimeoutSeconds = 25;
+
+// Compact large numeric values in player-facing Telegram text (e.g. 1,000 -> 1k).
+// This runs only at delivery time, so stored values and game calculations remain exact.
+const NUMBER_SUFFIXES = [
+  "", "k", "m", "b", "t", "qa", "qi", "sx", "sp", "oc", "no", "dc",
+  "ud", "dd", "td", "qd", "qid", "sxd", "spd", "ocd", "nod", "vg",
+];
+
+function abbreviateDisplayedNumbers(value: string): string {
+  return value.replace(/\b\d{1,3}(?:[,.]\d{3})+\b|\b\d{4,}\b/g, (raw) => {
+    const amount = Number(raw.replace(/[,.]/g, ""));
+    if (!Number.isFinite(amount) || amount < 1000) return raw;
+    const suffixIndex = Math.floor(Math.log10(amount) / 3);
+    const suffix = NUMBER_SUFFIXES[suffixIndex];
+    // For values beyond the named suffix table, keep extending with scientific-style
+    // exponent notation instead of incorrectly labelling them with the last suffix.
+    if (!suffix) return `${trimZeros(amount / (10 ** (suffixIndex * 3)))}e${suffixIndex * 3}`;
+    return `${trimZeros(amount / (10 ** (suffixIndex * 3)))}${suffix}`;
+  });
+}
+
+function trimZeros(value: number): string {
+  return value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2).replace(/\.?0+$/, "");
+}
+
+function abbreviateMarkup(value: Record<string, unknown> | undefined): Record<string, unknown> | undefined {
+  if (!value) return undefined;
+  const convert = (item: unknown): unknown => {
+    if (Array.isArray(item)) return item.map(convert);
+    if (!item || typeof item !== "object") return item;
+    const object = item as Record<string, unknown>;
+    return Object.fromEntries(Object.entries(object).map(([key, child]) => [
+      key,
+      key === "text" && typeof child === "string" ? abbreviateDisplayedNumbers(child) : convert(child),
+    ]));
+  };
+  return convert(value) as Record<string, unknown>;
+}
 
 type TelegramEnvelope<T> = {
   ok: boolean;
@@ -15,10 +59,37 @@ type TelegramEnvelope<T> = {
   description?: string;
 };
 
+// Normalize both current inline keyboards and legacy/nested markup already
+// persisted in the outbox. Telegram expects reply_markup.inline_keyboard to
+// be an array of button rows; a wrapper like { keyboard: { inline_keyboard } }
+// causes HTTP 400 ("field keyboard must be of type Array").
+function normalizeReplyMarkup(value: unknown): Record<string, unknown> | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
+  const raw = value as Record<string, unknown>;
+  const candidate = raw.reply_markup && typeof raw.reply_markup === "object" && !Array.isArray(raw.reply_markup)
+    ? raw.reply_markup as Record<string, unknown>
+    : raw;
+
+  if (Array.isArray(candidate.inline_keyboard)) {
+    return { inline_keyboard: candidate.inline_keyboard };
+  }
+  if (Array.isArray(candidate.keyboard)) {
+    return { keyboard: candidate.keyboard };
+  }
+  // Handle a legacy nested `keyboard` property containing inline markup.
+  if (candidate.keyboard && typeof candidate.keyboard === "object" && !Array.isArray(candidate.keyboard)) {
+    const nested = candidate.keyboard as Record<string, unknown>;
+    if (Array.isArray(nested.inline_keyboard)) return { inline_keyboard: nested.inline_keyboard };
+    if (Array.isArray(nested.keyboard)) return { keyboard: nested.keyboard };
+  }
+  return undefined;
+}
+
 class TelegramApiError extends Error {
   constructor(
     readonly method: string,
     readonly status: number,
+    readonly description?: string,
   ) {
     super(`Telegram API request failed: ${method} (${status})`);
   }
@@ -55,18 +126,121 @@ async function telegramRequest<T>(
   });
   const envelope = (await response.json()) as TelegramEnvelope<T>;
   if (!response.ok || !envelope.ok) {
-    throw new TelegramApiError(method, response.status);
+    throw new TelegramApiError(method, response.status, envelope.description);
   }
   return envelope.result;
 }
 
-async function sendPendingMessages(): Promise<void> {
+async function deleteTelegramMessage(
+  chatId: string,
+  messageId: number,
+): Promise<void> {
+  try {
+    await telegramRequest<boolean>("deleteMessage", {
+      chat_id: chatId,
+      message_id: messageId,
+    });
+  } catch (error) {
+    // Already deleted, older than 48h, or the bot lacks delete rights in this group.
+    logger.warn(
+      {
+        errorName: error instanceof Error ? error.name : "UnknownError",
+        errorMessage: error instanceof Error ? error.message : String(error),
+        telegramDescription: error instanceof TelegramApiError ? error.description : undefined,
+        telegramMethod: error instanceof TelegramApiError ? error.method : undefined,
+        telegramStatus: error instanceof TelegramApiError ? error.status : undefined,
+      },
+      "Telegram message could not be deleted",
+    );
+  }
+}
+
+// Keeps the chat tidy: once a new reply is out, remove the player's previous
+// bot message (the one whose button was just pressed) and their typed command.
+async function cleanUpChat(item: TelegramOutboxMessage): Promise<void> {
+  // In private chats, keep both the player's commands and the bot's replies.
+  // Telegram private chat IDs are positive; group/supergroup IDs are negative.
+  if (Number(item.chatId) > 0) return;
+
+  try {
+    for (const old of await getSupersededMessages(item)) {
+      await deleteTelegramMessage(item.chatId, old.messageId);
+      await clearOutboxMessageId(old.id);
+    }
+    if (item.triggerMessageId !== null) {
+      await deleteTelegramMessage(item.chatId, item.triggerMessageId);
+    }
+  } catch (error) {
+    logger.warn(
+      { errorName: error instanceof Error ? error.name : "UnknownError" },
+      "Chat cleanup failed; continuing",
+    );
+  }
+}
+
+async function deliverLobbyMessage(item: TelegramOutboxMessage): Promise<void> {
+  const lobbyId = item.lobbyId!;
+  const lobbyMessageId = await getLobbyMessageId(lobbyId);
+
+  if (item.lobbyAction === "edit" && lobbyMessageId !== null) {
+    try {
+      await telegramRequest("editMessageText", {
+        chat_id: item.chatId,
+        message_id: lobbyMessageId,
+        text: abbreviateDisplayedNumbers(item.text),
+        // Without a keyboard, an empty one removes the old buttons.
+        reply_markup: normalizeReplyMarkup(item.replyMarkup) ?? { inline_keyboard: [] },
+      });
+      await markOutboxMessageSent(item.id, null);
+      await cleanUpChat(item);
+      return;
+    } catch (error) {
+      if (
+        error instanceof TelegramApiError &&
+        /not modified/i.test(error.description ?? "")
+      ) {
+        await markOutboxMessageSent(item.id, null);
+        await cleanUpChat(item);
+        return;
+      }
+      logger.warn(
+        {
+          errorName: error instanceof Error ? error.name : "UnknownError",
+          errorMessage: error instanceof Error ? error.message : String(error),
+          telegramDescription: error instanceof TelegramApiError ? error.description : undefined,
+          telegramMethod: error instanceof TelegramApiError ? error.method : undefined,
+          telegramStatus: error instanceof TelegramApiError ? error.status : undefined,
+        },
+        "Lobby message could not be edited; posting a new one",
+      );
+    }
+  }
+
+  const payload: Record<string, unknown> = {
+    chat_id: item.chatId,
+    text: abbreviateDisplayedNumbers(item.text),
+  };
+  const replyMarkup = abbreviateMarkup(normalizeReplyMarkup(item.replyMarkup));
+  if (replyMarkup) payload["reply_markup"] = replyMarkup;
+  const sent = await telegramRequest<{ message_id?: number }>(
+    "sendMessage",
+    payload,
+  );
+  if (sent.message_id !== undefined) {
+    await setLobbyMessageId(lobbyId, sent.message_id);
+  }
+  await markOutboxMessageSent(item.id, null);
+  await cleanUpChat(item);
+}
+
+async function deliverPending(): Promise<void> {
   const pending = await getPendingOutboxMessages();
   for (const item of pending) {
     if (item.callbackQueryId) {
       const answer: TelegramCallbackAnswer = {
         callback_query_id: item.callbackQueryId,
       };
+      if (item.callbackText) answer.text = item.callbackText;
       try {
         await telegramRequest<boolean>("answerCallbackQuery", { ...answer });
       } catch (error) {
@@ -79,25 +253,80 @@ async function sendPendingMessages(): Promise<void> {
       }
     }
 
+    // Pure button acknowledgement (pop-up only): nothing to send.
+    if (item.text === "") {
+      await markOutboxMessageSent(item.id, null);
+      continue;
+    }
+
+    if (item.lobbyId !== null) {
+      await deliverLobbyMessage(item);
+      continue;
+    }
+
     const payload: Record<string, unknown> = {
       chat_id: item.chatId,
-      text: item.text,
+      text: abbreviateDisplayedNumbers(item.text),
     };
-    if (item.replyMarkup) payload["reply_markup"] = item.replyMarkup;
-    await telegramRequest("sendMessage", payload);
-    await markOutboxMessageSent(item.id);
+    const replyMarkup = abbreviateMarkup(normalizeReplyMarkup(item.replyMarkup));
+    if (replyMarkup) payload["reply_markup"] = replyMarkup;
+    const sent = await telegramRequest<{ message_id?: number }>(
+      "sendMessage",
+      payload,
+    );
+    await markOutboxMessageSent(item.id, sent.message_id ?? null);
+    await cleanUpChat(item);
+  }
+}
+
+// The poll loop and the lobby timer both deliver messages: run them one at a
+// time so the same outbox row is never sent twice.
+let sendChain: Promise<unknown> = Promise.resolve();
+function sendPendingMessages(): Promise<void> {
+  const run = sendChain.then(deliverPending, deliverPending);
+  sendChain = run.catch(() => undefined);
+  return run;
+}
+
+// Starts lobbies whose 30 seconds are over and resolves rounds whose time ran out.
+async function lobbyTimer(): Promise<void> {
+  while (true) {
+    await pause(1_000);
+    try {
+      await processDueLobbies();
+      await sendPendingMessages();
+    } catch (error) {
+      logger.error(
+        {
+          errorName: error instanceof Error ? error.name : "UnknownError",
+          errorMessage: error instanceof Error ? error.message : String(error),
+          errorStack: error instanceof Error ? error.stack : undefined,
+          telegramDescription: error instanceof TelegramApiError ? error.description : undefined,
+          telegramMethod: error instanceof TelegramApiError ? error.method : undefined,
+          telegramStatus: error instanceof TelegramApiError ? error.status : undefined,
+        },
+        "Lobby timer failed; it will retry",
+      );
+    }
   }
 }
 
 async function configureBotCommands(): Promise<void> {
   await telegramRequest("setMyCommands", {
     commands: [
-      { command: "start", description: "Crea il personaggio o apre il menu" },
-      { command: "esplora", description: "Esplora la regione" },
-      { command: "profilo", description: "Mostra la scheda" },
-      { command: "inventario", description: "Mostra lo zaino" },
-      { command: "luoghi", description: "Scegli una regione" },
-      { command: "aiuto", description: "Mostra i comandi" },
+      { command: "start", description: "Create your character or open the menu" },
+      { command: "explore", description: "Explore the region" },
+      { command: "profile", description: "Show your character sheet" },
+      { command: "inventory", description: "Browse your inventory by category" },
+      { command: "equip", description: "Equip a weapon or armor by inventory ID" },
+      { command: "use", description: "Use a consumable by inventory ID" },
+      { command: "orb", description: "Use a Class Orb by inventory ID" },
+      { command: "places", description: "Choose a region" },
+      { command: "sleep", description: "Rest and restore your HP" },
+      { command: "boss", description: "Open a co-op boss lobby (up to 4 players)" },
+      { command: "duel", description: "Challenge anyone in the chat to a duel" },
+      { command: "trade", description: "Request a safe item and coin trade" },
+      { command: "help", description: "Show the commands" },
     ],
   });
 }
@@ -134,12 +363,21 @@ async function pollLoop(): Promise<void> {
     } catch (error) {
       if (error instanceof TelegramApiError) {
         logger.error(
-          { method: error.method, status: error.status },
+          {
+            method: error.method,
+            status: error.status,
+            description: error.description,
+            errorMessage: error.message,
+          },
           "Telegram request failed; polling will retry",
         );
       } else {
         logger.error(
-          { errorName: error instanceof Error ? error.name : "UnknownError" },
+          {
+            errorName: error instanceof Error ? error.name : "UnknownError",
+            errorMessage: error instanceof Error ? error.message : String(error),
+            errorStack: error instanceof Error ? error.stack : undefined,
+          },
           "Telegram bot loop failed; polling will retry",
         );
       }
@@ -160,5 +398,6 @@ export async function startTelegramBot(): Promise<void> {
     return;
   }
   logger.info({ username: bot.username }, "Telegram bot connected and polling for updates");
+  void lobbyTimer();
   await pollLoop();
 }

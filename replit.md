@@ -1,6 +1,6 @@
 # Valdombra — RPG Telegram
 
-Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esplorazione, combattimenti a turni e progressi salvati.
+A text-based RPG adventure playable on Telegram, with characters, exploration, turn-based combat and saved progress.
 
 ## Run & Operate
 
@@ -31,6 +31,8 @@ Un'avventura RPG testuale in italiano giocabile su Telegram, con personaggi, esp
 
 - The bot uses Telegram long polling so local development does not require a public webhook URL.
 - Game updates and outgoing replies are stored in PostgreSQL; a transactional outbox prevents duplicate game actions on Telegram retries.
+- Every bot reply starts with a "Message for <name>" line (plain name, no tag). When a reply is delivered, the player's previous bot message and their typed command are deleted to keep the chat clean (groups need the bot to have the delete-messages right).
+- `/boss` opens a 30-second co-op lobby (max 4 players) against the region boss; `/duel` opens a 30-second lobby where the first challenger starts a duel. Both are round-based fights on one shared message that is edited in place (20s per round, idle players auto-attack). A background timer in `telegram-bot.ts` closes lobbies and resolves rounds; state lives in `telegram_lobbies`.
 - Each character save is scoped to both the Telegram user and the chat, so the same player can have different characters in different groups.
 - Item rows follow one shared schema for weapons, armor, and class orbs; populate the catalog only from the data supplied for those categories.
 

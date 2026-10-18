@@ -10,7 +10,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { z } from "zod/v4";
 
-export const itemTypes = ["Weapons", "Armors", "ClassOrb"] as const;
+export const itemTypes = ["Weapons", "Armors", "Off-Hand", "ClassOrb", "Consumables"] as const;
 export const itemTypeEnum = pgEnum("item_type", itemTypes);
 
 export const itemStatsSchema = z

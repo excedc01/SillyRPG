@@ -11,6 +11,7 @@ export type TelegramChat = {
 };
 
 export type TelegramMessage = {
+  message_id?: number;
   chat: TelegramChat;
   from?: TelegramUser;
   text?: string;

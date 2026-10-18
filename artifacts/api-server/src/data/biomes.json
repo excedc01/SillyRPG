@@ -4,10 +4,204 @@
     "name": "Emerald Grove",
     "recommended_level": "0-5",
     "mobs": [
-      { "mob_id": "mob_01_01", "name": "Chicken", "hp": 20, "atk": 3, "xp_reward": 10, "drop_table": [{ "item_id": "arm_t0_01", "chance": 0.1 }] },
-      { "mob_id": "mob_01_02", "name": "Sheep", "hp": 35, "atk": 5, "xp_reward": 18, "drop_table": [{ "item_id": "wpn_t0_01", "chance": 0.15 }] },
-      { "mob_id": "mob_01_03", "name": "Slime", "hp": 50, "atk": 8, "xp_reward": 28, "drop_table": [{ "item_id": "wpn_t0_02", "chance": 0.12 }, { "item_id": "arm_t0_02", "chance": 0.1 }] },
-      { "mob_id": "mob_01_04", "name": "Goblin", "hp": 75, "atk": 12, "xp_reward": 45, "drop_table": [{ "item_id": "wpn_t1_02", "chance": 0.08 }, { "item_id": "arm_t0_03", "chance": 0.1 }] }
+      {
+        "mob_id": "mob_01_01",
+        "name": "Chicken",
+        "hp": 20,
+        "atk": 3,
+        "xp_reward": 10,
+        "drop_table": [
+          {
+            "item_id": "arm_t0_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t1_11",
+            "chance": 0.05
+          },
+          {
+            "item_id": "arm_t1_14",
+            "chance": 0.04
+          },
+          {
+            "item_id": "wpn_t1_n102",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t1_n102",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_02",
+        "name": "Sheep",
+        "hp": 35,
+        "atk": 5,
+        "xp_reward": 18,
+        "drop_table": [
+          {
+            "item_id": "wpn_t0_01",
+            "chance": 0.15
+          },
+          {
+            "item_id": "arm_t1_12",
+            "chance": 0.05
+          },
+          {
+            "item_id": "arm_t1_n103",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t1_n103",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_03",
+        "name": "Slime",
+        "hp": 50,
+        "atk": 8,
+        "xp_reward": 28,
+        "drop_table": [
+          {
+            "item_id": "wpn_t0_02",
+            "chance": 0.12
+          },
+          {
+            "item_id": "arm_t0_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t1_13",
+            "chance": 0.05
+          },
+          {
+            "item_id": "wpn_t1_n104",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t1_n104",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_04",
+        "name": "Goblin",
+        "hp": 75,
+        "atk": 12,
+        "xp_reward": 45,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t1_12",
+            "chance": 0.05
+          },
+          {
+            "item_id": "arm_t1_n105",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t1_n105",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_new_01",
+        "name": "Mossback Tortoise",
+        "hp": 28,
+        "atk": 4,
+        "xp_reward": 14,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_new_02",
+        "name": "Bramble Fox",
+        "hp": 42,
+        "atk": 6,
+        "xp_reward": 20,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_new_03",
+        "name": "Pollen Sprite",
+        "hp": 32,
+        "atk": 7,
+        "xp_reward": 22,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_new_04",
+        "name": "Ancient Stag",
+        "hp": 68,
+        "atk": 10,
+        "xp_reward": 32,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_01_new_05",
+        "name": "Verdant Treant",
+        "hp": 145,
+        "atk": 18,
+        "xp_reward": 90,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "arm_t0_03",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_01",
@@ -16,7 +210,32 @@
       "hp": 250,
       "atk": 22,
       "xp_reward": 200,
-      "drop_table": [{ "item_id": "wpn_t1_01", "chance": 0.5 }, { "item_id": "orb_01", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t1_01",
+          "chance": 0.5
+        },
+        {
+          "item_id": "wpn_t1_11",
+          "chance": 0.2
+        },
+        {
+          "item_id": "arm_t1_13",
+          "chance": 0.2
+        },
+        {
+          "item_id": "wpn_t2_n202",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_t2_n204",
+          "chance": 0.12
+        },
+        {
+          "item_id": "wpn_boss_frustas_cazzone_puzzone",
+          "chance": 0.005
+        }
+      ]
     }
   },
   {
@@ -24,10 +243,192 @@
     "name": "Whispering Woods",
     "recommended_level": "5-10",
     "mobs": [
-      { "mob_id": "mob_02_01", "name": "Giant Bat", "hp": 110, "atk": 16, "xp_reward": 60, "drop_table": [{ "item_id": "arm_t1_01", "chance": 0.12 }] },
-      { "mob_id": "mob_02_02", "name": "Wild Boar", "hp": 150, "atk": 20, "xp_reward": 85, "drop_table": [{ "item_id": "arm_t1_02", "chance": 0.1 }] },
-      { "mob_id": "mob_02_03", "name": "Forest Spider", "hp": 130, "atk": 24, "xp_reward": 95, "drop_table": [{ "item_id": "wpn_t1_03", "chance": 0.1 }] },
-      { "mob_id": "mob_02_04", "name": "Bandit Scout", "hp": 180, "atk": 28, "xp_reward": 120, "drop_table": [{ "item_id": "wpn_t2_01", "chance": 0.08 }] }
+      {
+        "mob_id": "mob_02_01",
+        "name": "Giant Bat",
+        "hp": 110,
+        "atk": 16,
+        "xp_reward": 60,
+        "drop_table": [
+          {
+            "item_id": "arm_t1_01",
+            "chance": 0.12
+          },
+          {
+            "item_id": "wpn_t1_11",
+            "chance": 0.05
+          },
+          {
+            "item_id": "wpn_t1_n103",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t1_n103",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_02",
+        "name": "Wild Boar",
+        "hp": 150,
+        "atk": 20,
+        "xp_reward": 85,
+        "drop_table": [
+          {
+            "item_id": "arm_t1_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t1_13",
+            "chance": 0.05
+          },
+          {
+            "item_id": "arm_t1_n104",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t1_n104",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_03",
+        "name": "Forest Spider",
+        "hp": 130,
+        "atk": 24,
+        "xp_reward": 95,
+        "drop_table": [
+          {
+            "item_id": "wpn_t1_03",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t2_11",
+            "chance": 0.04
+          },
+          {
+            "item_id": "wpn_t1_n105",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t1_n105",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_04",
+        "name": "Bandit Scout",
+        "hp": 180,
+        "atk": 28,
+        "xp_reward": 120,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.04
+          },
+          {
+            "item_id": "arm_t1_n101",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t1_n101",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_new_01",
+        "name": "Moonlit Lynx",
+        "hp": 125,
+        "atk": 17,
+        "xp_reward": 38,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_new_02",
+        "name": "Thornwing Owl",
+        "hp": 100,
+        "atk": 19,
+        "xp_reward": 36,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_new_03",
+        "name": "Mossfang Wolf",
+        "hp": 165,
+        "atk": 22,
+        "xp_reward": 48,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_new_04",
+        "name": "Rootbound Entling",
+        "hp": 190,
+        "atk": 24,
+        "xp_reward": 55,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_02_new_05",
+        "name": "Elderwood Stalker",
+        "hp": 330,
+        "atk": 38,
+        "xp_reward": 150,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t2_11",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_02",
@@ -36,7 +437,28 @@
       "hp": 500,
       "atk": 42,
       "xp_reward": 450,
-      "drop_table": [{ "item_id": "arm_t1_03", "chance": 0.5 }, { "item_id": "orb_03", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "arm_t1_03",
+          "chance": 0.5
+        },
+        {
+          "item_id": "wpn_t2_12",
+          "chance": 0.15
+        },
+        {
+          "item_id": "arm_t2_12",
+          "chance": 0.15
+        },
+        {
+          "item_id": "wpn_t2_n203",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_t2_n205",
+          "chance": 0.12
+        }
+      ]
     }
   },
   {
@@ -44,10 +466,192 @@
     "name": "Sunken Catacombs",
     "recommended_level": "10-15",
     "mobs": [
-      { "mob_id": "mob_03_01", "name": "Skeleton Warrior", "hp": 220, "atk": 32, "xp_reward": 150, "drop_table": [{ "item_id": "wpn_t2_02", "chance": 0.1 }] },
-      { "mob_id": "mob_03_02", "name": "Zombie Guard", "hp": 300, "atk": 28, "xp_reward": 170, "drop_table": [{ "item_id": "arm_t2_01", "chance": 0.1 }] },
-      { "mob_id": "mob_03_03", "name": "Tomb Cultist", "hp": 240, "atk": 38, "xp_reward": 190, "drop_table": [{ "item_id": "wpn_t2_01", "chance": 0.12 }] },
-      { "mob_id": "mob_03_04", "name": "Crypt Ghoul", "hp": 340, "atk": 42, "xp_reward": 220, "drop_table": [{ "item_id": "arm_t2_02", "chance": 0.08 }] }
+      {
+        "mob_id": "mob_03_01",
+        "name": "Skeleton Warrior",
+        "hp": 220,
+        "atk": 32,
+        "xp_reward": 150,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t2_13",
+            "chance": 0.04
+          },
+          {
+            "item_id": "wpn_t2_n204",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t2_n204",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_02",
+        "name": "Zombie Guard",
+        "hp": 300,
+        "atk": 28,
+        "xp_reward": 170,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t2_13",
+            "chance": 0.04
+          },
+          {
+            "item_id": "arm_t2_n205",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t2_n205",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_03",
+        "name": "Tomb Cultist",
+        "hp": 240,
+        "atk": 38,
+        "xp_reward": 190,
+        "drop_table": [
+          {
+            "item_id": "wpn_t2_01",
+            "chance": 0.12
+          },
+          {
+            "item_id": "arm_t2_11",
+            "chance": 0.04
+          },
+          {
+            "item_id": "wpn_t2_n201",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t2_n201",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_04",
+        "name": "Crypt Ghoul",
+        "hp": 340,
+        "atk": 42,
+        "xp_reward": 220,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.04
+          },
+          {
+            "item_id": "arm_t2_n202",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t2_n202",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_new_01",
+        "name": "Bone Crawler",
+        "hp": 230,
+        "atk": 30,
+        "xp_reward": 45,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_new_02",
+        "name": "Grave Lantern",
+        "hp": 210,
+        "atk": 36,
+        "xp_reward": 48,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_new_03",
+        "name": "Crypt Hound",
+        "hp": 320,
+        "atk": 40,
+        "xp_reward": 62,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_new_04",
+        "name": "Mummy Acolyte",
+        "hp": 360,
+        "atk": 43,
+        "xp_reward": 70,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_03_new_05",
+        "name": "Pharaoh Revenant",
+        "hp": 620,
+        "atk": 62,
+        "xp_reward": 190,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t2_12",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_03",
@@ -56,7 +660,24 @@
       "hp": 850,
       "atk": 65,
       "xp_reward": 800,
-      "drop_table": [{ "item_id": "orb_02", "chance": 0.2 }, { "item_id": "orb_06", "chance": 0.1 }]
+      "drop_table": [
+        {
+          "item_id": "arm_t2_12",
+          "chance": 0.15
+        },
+        {
+          "item_id": "wpn_t2_13",
+          "chance": 0.15
+        },
+        {
+          "item_id": "wpn_t3_n304",
+          "chance": 0.09
+        },
+        {
+          "item_id": "arm_t3_n301",
+          "chance": 0.09
+        }
+      ]
     }
   },
   {
@@ -64,10 +685,192 @@
     "name": "Scorching Wastes",
     "recommended_level": "15-20",
     "mobs": [
-      { "mob_id": "mob_04_01", "name": "Sand Scorpion", "hp": 380, "atk": 48, "xp_reward": 260, "drop_table": [{ "item_id": "wpn_t3_01", "chance": 0.08 }] },
-      { "mob_id": "mob_04_02", "name": "Desert Marauder", "hp": 440, "atk": 52, "xp_reward": 300, "drop_table": [{ "item_id": "arm_t2_02", "chance": 0.1 }] },
-      { "mob_id": "mob_04_03", "name": "Fire Elemental", "hp": 400, "atk": 60, "xp_reward": 340, "drop_table": [{ "item_id": "wpn_t3_03", "chance": 0.08 }] },
-      { "mob_id": "mob_04_04", "name": "Dune Basilisk", "hp": 520, "atk": 58, "xp_reward": 390, "drop_table": [{ "item_id": "arm_t3_01", "chance": 0.07 }] }
+      {
+        "mob_id": "mob_04_01",
+        "name": "Sand Scorpion",
+        "hp": 380,
+        "atk": 48,
+        "xp_reward": 260,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_01",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t2_n205",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t2_n205",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_02",
+        "name": "Desert Marauder",
+        "hp": 440,
+        "atk": 52,
+        "xp_reward": 300,
+        "drop_table": [
+          {
+            "item_id": "arm_t2_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t2_n201",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t2_n201",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_03",
+        "name": "Fire Elemental",
+        "hp": 400,
+        "atk": 60,
+        "xp_reward": 340,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_03",
+            "chance": 0.08
+          },
+          {
+            "item_id": "arm_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t2_n202",
+            "chance": 0.035
+          },
+          {
+            "item_id": "arm_t2_n202",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_04",
+        "name": "Dune Basilisk",
+        "hp": 520,
+        "atk": 58,
+        "xp_reward": 390,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t2_n203",
+            "chance": 0.035
+          },
+          {
+            "item_id": "wpn_t2_n203",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_new_01",
+        "name": "Dust Devil",
+        "hp": 390,
+        "atk": 45,
+        "xp_reward": 65,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_new_02",
+        "name": "Cinder Jackal",
+        "hp": 420,
+        "atk": 51,
+        "xp_reward": 70,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_new_03",
+        "name": "Glassfang Viper",
+        "hp": 350,
+        "atk": 57,
+        "xp_reward": 72,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_new_04",
+        "name": "Scorchwing Vulture",
+        "hp": 500,
+        "atk": 61,
+        "xp_reward": 85,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_04_new_05",
+        "name": "Sun-Eater Scarab",
+        "hp": 820,
+        "atk": 78,
+        "xp_reward": 240,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_04",
@@ -76,7 +879,28 @@
       "hp": 1300,
       "atk": 90,
       "xp_reward": 1400,
-      "drop_table": [{ "item_id": "wpn_t3_02", "chance": 0.35 }, { "item_id": "orb_05", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t3_02",
+          "chance": 0.35
+        },
+        {
+          "item_id": "arm_t3_12",
+          "chance": 0.12
+        },
+        {
+          "item_id": "wpn_t3_13",
+          "chance": 0.12
+        },
+        {
+          "item_id": "wpn_t3_n305",
+          "chance": 0.09
+        },
+        {
+          "item_id": "arm_t3_n302",
+          "chance": 0.09
+        }
+      ]
     }
   },
   {
@@ -84,10 +908,192 @@
     "name": "Frostbite Peaks",
     "recommended_level": "20-25",
     "mobs": [
-      { "mob_id": "mob_05_01", "name": "Ice Harpy", "hp": 550, "atk": 66, "xp_reward": 430, "drop_table": [{ "item_id": "wpn_t3_01", "chance": 0.1 }] },
-      { "mob_id": "mob_05_02", "name": "Snow Wolf", "hp": 620, "atk": 72, "xp_reward": 480, "drop_table": [{ "item_id": "arm_t3_01", "chance": 0.1 }] },
-      { "mob_id": "mob_05_03", "name": "Frost Golem", "hp": 800, "atk": 60, "xp_reward": 540, "drop_table": [{ "item_id": "arm_t3_02", "chance": 0.08 }] },
-      { "mob_id": "mob_05_04", "name": "Glacier Berserker", "hp": 710, "atk": 82, "xp_reward": 600, "drop_table": [{ "item_id": "wpn_t3_02", "chance": 0.08 }] }
+      {
+        "mob_id": "mob_05_01",
+        "name": "Ice Harpy",
+        "hp": 550,
+        "atk": 66,
+        "xp_reward": 430,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t3_n301",
+            "chance": 0.022
+          },
+          {
+            "item_id": "arm_t3_n301",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_02",
+        "name": "Snow Wolf",
+        "hp": 620,
+        "atk": 72,
+        "xp_reward": 480,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t3_n302",
+            "chance": 0.022
+          },
+          {
+            "item_id": "wpn_t3_n302",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_03",
+        "name": "Frost Golem",
+        "hp": 800,
+        "atk": 60,
+        "xp_reward": 540,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "arm_t3_13",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t3_n303",
+            "chance": 0.022
+          },
+          {
+            "item_id": "arm_t3_n303",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_04",
+        "name": "Glacier Berserker",
+        "hp": 710,
+        "atk": 82,
+        "xp_reward": 600,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t3_n304",
+            "chance": 0.022
+          },
+          {
+            "item_id": "wpn_t3_n304",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_new_01",
+        "name": "Rime Fox",
+        "hp": 560,
+        "atk": 62,
+        "xp_reward": 78,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_new_02",
+        "name": "Icebound Revenant",
+        "hp": 690,
+        "atk": 75,
+        "xp_reward": 90,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_new_03",
+        "name": "Avalanche Yeti",
+        "hp": 850,
+        "atk": 78,
+        "xp_reward": 105,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_new_04",
+        "name": "Crystalwing Roc",
+        "hp": 740,
+        "atk": 86,
+        "xp_reward": 110,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_05_new_05",
+        "name": "Frost Crown Wyrm",
+        "hp": 1250,
+        "atk": 105,
+        "xp_reward": 300,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t3_12",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_05",
@@ -96,7 +1102,32 @@
       "hp": 1900,
       "atk": 115,
       "xp_reward": 2200,
-      "drop_table": [{ "item_id": "wpn_t4_03", "chance": 0.25 }, { "item_id": "arm_t3_02", "chance": 0.3 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t4_03",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_t3_02",
+          "chance": 0.3
+        },
+        {
+          "item_id": "wpn_t3_13",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_t3_12",
+          "chance": 0.12
+        },
+        {
+          "item_id": "wpn_t4_n401",
+          "chance": 0.07
+        },
+        {
+          "item_id": "arm_t4_n403",
+          "chance": 0.07
+        }
+      ]
     }
   },
   {
@@ -104,10 +1135,192 @@
     "name": "Misty Swamps",
     "recommended_level": "25-30",
     "mobs": [
-      { "mob_id": "mob_06_01", "name": "Swamp Toad", "hp": 750, "atk": 85, "xp_reward": 650, "drop_table": [{ "item_id": "arm_t3_01", "chance": 0.1 }] },
-      { "mob_id": "mob_06_02", "name": "Plague Witch", "hp": 680, "atk": 100, "xp_reward": 720, "drop_table": [{ "item_id": "wpn_t3_03", "chance": 0.1 }] },
-      { "mob_id": "mob_06_03", "name": "Hydra Hatchling", "hp": 900, "atk": 95, "xp_reward": 800, "drop_table": [{ "item_id": "wpn_t4_01", "chance": 0.05 }] },
-      { "mob_id": "mob_06_04", "name": "Mud Lurker", "hp": 1050, "atk": 88, "xp_reward": 870, "drop_table": [{ "item_id": "arm_t3_02", "chance": 0.08 }] }
+      {
+        "mob_id": "mob_06_01",
+        "name": "Swamp Toad",
+        "hp": 750,
+        "atk": 85,
+        "xp_reward": 650,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t3_12",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t3_n302",
+            "chance": 0.022
+          },
+          {
+            "item_id": "arm_t3_n302",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_02",
+        "name": "Plague Witch",
+        "hp": 680,
+        "atk": 100,
+        "xp_reward": 720,
+        "drop_table": [
+          {
+            "item_id": "wpn_t3_03",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t3_n303",
+            "chance": 0.022
+          },
+          {
+            "item_id": "wpn_t3_n303",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_03",
+        "name": "Hydra Hatchling",
+        "hp": 900,
+        "atk": 95,
+        "xp_reward": 800,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_01",
+            "chance": 0.05
+          },
+          {
+            "item_id": "wpn_t3_11",
+            "chance": 0.03
+          },
+          {
+            "item_id": "wpn_t3_n304",
+            "chance": 0.022
+          },
+          {
+            "item_id": "arm_t3_n304",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_04",
+        "name": "Mud Lurker",
+        "hp": 1050,
+        "atk": 88,
+        "xp_reward": 870,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.03
+          },
+          {
+            "item_id": "arm_t3_n305",
+            "chance": 0.022
+          },
+          {
+            "item_id": "wpn_t3_n305",
+            "chance": 0.022
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_new_01",
+        "name": "Bog Leech Swarm",
+        "hp": 720,
+        "atk": 80,
+        "xp_reward": 85,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_new_02",
+        "name": "Rotcap Shambler",
+        "hp": 800,
+        "atk": 88,
+        "xp_reward": 95,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_new_03",
+        "name": "Venom Reed Stalker",
+        "hp": 760,
+        "atk": 96,
+        "xp_reward": 100,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_new_04",
+        "name": "Fen Hagling",
+        "hp": 940,
+        "atk": 102,
+        "xp_reward": 115,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_06_new_05",
+        "name": "Plagueheart Hydra",
+        "hp": 1450,
+        "atk": 130,
+        "xp_reward": 330,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t3_13",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_06",
@@ -116,7 +1329,28 @@
       "hp": 2600,
       "atk": 140,
       "xp_reward": 3200,
-      "drop_table": [{ "item_id": "wpn_t4_01", "chance": 0.3 }, { "item_id": "orb_04", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t4_01",
+          "chance": 0.3
+        },
+        {
+          "item_id": "wpn_t4_11",
+          "chance": 0.08
+        },
+        {
+          "item_id": "arm_t4_11",
+          "chance": 0.08
+        },
+        {
+          "item_id": "wpn_t4_n402",
+          "chance": 0.07
+        },
+        {
+          "item_id": "arm_t4_n404",
+          "chance": 0.07
+        }
+      ]
     }
   },
   {
@@ -124,10 +1358,192 @@
     "name": "Volcanic Core",
     "recommended_level": "30-35",
     "mobs": [
-      { "mob_id": "mob_07_01", "name": "Magma Hound", "hp": 1100, "atk": 110, "xp_reward": 950, "drop_table": [{ "item_id": "arm_t3_02", "chance": 0.1 }] },
-      { "mob_id": "mob_07_02", "name": "Lava Brute", "hp": 1450, "atk": 105, "xp_reward": 1050, "drop_table": [{ "item_id": "arm_t4_01", "chance": 0.04 }] },
-      { "mob_id": "mob_07_03", "name": "Fire Drake", "hp": 1250, "atk": 130, "xp_reward": 1180, "drop_table": [{ "item_id": "wpn_t4_02", "chance": 0.04 }] },
-      { "mob_id": "mob_07_04", "name": "Ash Cultist Priest", "hp": 1000, "atk": 140, "xp_reward": 1250, "drop_table": [{ "item_id": "wpn_t4_03", "chance": 0.06 }] }
+      {
+        "mob_id": "mob_07_01",
+        "name": "Magma Hound",
+        "hp": 1100,
+        "atk": 110,
+        "xp_reward": 950,
+        "drop_table": [
+          {
+            "item_id": "arm_t3_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t4_12",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_n403",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n403",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_02",
+        "name": "Lava Brute",
+        "hp": 1450,
+        "atk": 105,
+        "xp_reward": 1050,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.04
+          },
+          {
+            "item_id": "arm_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_n404",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n404",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_03",
+        "name": "Fire Drake",
+        "hp": 1250,
+        "atk": 130,
+        "xp_reward": 1180,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_02",
+            "chance": 0.04
+          },
+          {
+            "item_id": "wpn_t4_12",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_n405",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n405",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_04",
+        "name": "Ash Cultist Priest",
+        "hp": 1000,
+        "atk": 140,
+        "xp_reward": 1250,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.06
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_n401",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n401",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_new_01",
+        "name": "Ember Imp",
+        "hp": 1050,
+        "atk": 102,
+        "xp_reward": 110,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_new_02",
+        "name": "Obsidian Boar",
+        "hp": 1300,
+        "atk": 115,
+        "xp_reward": 125,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_new_03",
+        "name": "Coalwing Bat",
+        "hp": 980,
+        "atk": 125,
+        "xp_reward": 120,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_new_04",
+        "name": "Lava Shell Crab",
+        "hp": 1550,
+        "atk": 118,
+        "xp_reward": 140,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_07_new_05",
+        "name": "Caldera Tyrant",
+        "hp": 2300,
+        "atk": 165,
+        "xp_reward": 420,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_07",
@@ -136,7 +1552,32 @@
       "hp": 3500,
       "atk": 175,
       "xp_reward": 4500,
-      "drop_table": [{ "item_id": "arm_t4_01", "chance": 0.25 }, { "item_id": "wpn_t4_02", "chance": 0.2 }]
+      "drop_table": [
+        {
+          "item_id": "arm_t4_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_t4_02",
+          "chance": 0.2
+        },
+        {
+          "item_id": "arm_t4_12",
+          "chance": 0.08
+        },
+        {
+          "item_id": "wpn_t4_12",
+          "chance": 0.08
+        },
+        {
+          "item_id": "wpn_t4_n503",
+          "chance": 0.045
+        },
+        {
+          "item_id": "arm_t4_n505",
+          "chance": 0.045
+        }
+      ]
     }
   },
   {
@@ -144,10 +1585,192 @@
     "name": "Sky Citadel",
     "recommended_level": "35-40",
     "mobs": [
-      { "mob_id": "mob_08_01", "name": "Gryphon Scout", "hp": 1400, "atk": 145, "xp_reward": 1400, "drop_table": [{ "item_id": "wpn_t4_01", "chance": 0.08 }] },
-      { "mob_id": "mob_08_02", "name": "Celestial Guard", "hp": 1700, "atk": 135, "xp_reward": 1550, "drop_table": [{ "item_id": "arm_t4_02", "chance": 0.05 }] },
-      { "mob_id": "mob_08_03", "name": "Storm Elemental", "hp": 1350, "atk": 165, "xp_reward": 1700, "drop_table": [{ "item_id": "wpn_t4_03", "chance": 0.08 }] },
-      { "mob_id": "mob_08_04", "name": "Valkyrie Templar", "hp": 1850, "atk": 155, "xp_reward": 1850, "drop_table": [{ "item_id": "arm_t4_01", "chance": 0.06 }] }
+      {
+        "mob_id": "mob_08_01",
+        "name": "Gryphon Scout",
+        "hp": 1400,
+        "atk": 145,
+        "xp_reward": 1400,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_01",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t4_11",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_n404",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n404",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_02",
+        "name": "Celestial Guard",
+        "hp": 1700,
+        "atk": 135,
+        "xp_reward": 1550,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.05
+          },
+          {
+            "item_id": "arm_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_n405",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n405",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_03",
+        "name": "Storm Elemental",
+        "hp": 1350,
+        "atk": 165,
+        "xp_reward": 1700,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.08
+          },
+          {
+            "item_id": "arm_t4_11",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_n401",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n401",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_04",
+        "name": "Valkyrie Templar",
+        "hp": 1850,
+        "atk": 155,
+        "xp_reward": 1850,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.06
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_n402",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n402",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_new_01",
+        "name": "Cloudscale Drakelet",
+        "hp": 1380,
+        "atk": 138,
+        "xp_reward": 135,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_new_02",
+        "name": "Stormwing Roc",
+        "hp": 1550,
+        "atk": 150,
+        "xp_reward": 150,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_new_03",
+        "name": "Aether Sentry",
+        "hp": 1750,
+        "atk": 142,
+        "xp_reward": 155,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_new_04",
+        "name": "Thunderhoof Charger",
+        "hp": 1900,
+        "atk": 165,
+        "xp_reward": 175,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_08_new_05",
+        "name": "Heavenfall Archon",
+        "hp": 2800,
+        "atk": 210,
+        "xp_reward": 500,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_08",
@@ -156,7 +1779,28 @@
       "hp": 4800,
       "atk": 210,
       "xp_reward": 6000,
-      "drop_table": [{ "item_id": "arm_t4_02", "chance": 0.3 }, { "item_id": "orb_07", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "arm_t4_02",
+          "chance": 0.3
+        },
+        {
+          "item_id": "wpn_t4_13",
+          "chance": 0.08
+        },
+        {
+          "item_id": "arm_t4_11",
+          "chance": 0.08
+        },
+        {
+          "item_id": "wpn_t4_n504",
+          "chance": 0.045
+        },
+        {
+          "item_id": "arm_t4_n501",
+          "chance": 0.045
+        }
+      ]
     }
   },
   {
@@ -164,10 +1808,208 @@
     "name": "Shadow Realm",
     "recommended_level": "40-45",
     "mobs": [
-      { "mob_id": "mob_09_01", "name": "Shadow Stalker", "hp": 1800, "atk": 185, "xp_reward": 2000, "drop_table": [{ "item_id": "wpn_t4_01", "chance": 0.1 }] },
-      { "mob_id": "mob_09_02", "name": "Void Horror", "hp": 2300, "atk": 170, "xp_reward": 2200, "drop_table": [{ "item_id": "arm_t4_01", "chance": 0.08 }] },
-      { "mob_id": "mob_09_03", "name": "Nightmare Weaver", "hp": 1950, "atk": 205, "xp_reward": 2450, "drop_table": [{ "item_id": "wpn_t4_03", "chance": 0.1 }] },
-      { "mob_id": "mob_09_04", "name": "Dread Knight", "hp": 2600, "atk": 195, "xp_reward": 2700, "drop_table": [{ "item_id": "arm_t4_02", "chance": 0.08 }] }
+      {
+        "mob_id": "mob_09_01",
+        "name": "Shadow Stalker",
+        "hp": 1800,
+        "atk": 185,
+        "xp_reward": 2000,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t4_11",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_21",
+            "chance": 0.005
+          },
+          {
+            "item_id": "wpn_t4_n405",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n405",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_02",
+        "name": "Void Horror",
+        "hp": 2300,
+        "atk": 170,
+        "xp_reward": 2200,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.08
+          },
+          {
+            "item_id": "arm_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.005
+          },
+          {
+            "item_id": "arm_t4_n401",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n401",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_03",
+        "name": "Nightmare Weaver",
+        "hp": 1950,
+        "atk": 205,
+        "xp_reward": 2450,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t4_12",
+            "chance": 0.02
+          },
+          {
+            "item_id": "wpn_t4_23",
+            "chance": 0.005
+          },
+          {
+            "item_id": "wpn_t4_n402",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n402",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_04",
+        "name": "Dread Knight",
+        "hp": 2600,
+        "atk": 195,
+        "xp_reward": 2700,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.02
+          },
+          {
+            "item_id": "arm_t4_21",
+            "chance": 0.005
+          },
+          {
+            "item_id": "arm_t4_n403",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n403",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_new_01",
+        "name": "Gloomfang Hound",
+        "hp": 1750,
+        "atk": 175,
+        "xp_reward": 165,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_new_02",
+        "name": "Void-Touched Acolyte",
+        "hp": 1900,
+        "atk": 195,
+        "xp_reward": 175,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_new_03",
+        "name": "Duskblade Wraith",
+        "hp": 2200,
+        "atk": 200,
+        "xp_reward": 190,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_new_04",
+        "name": "Hollow-Eyed Seer",
+        "hp": 2050,
+        "atk": 215,
+        "xp_reward": 195,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_09_new_05",
+        "name": "Eclipse Reaper",
+        "hp": 3400,
+        "atk": 265,
+        "xp_reward": 600,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "wpn_t4_13",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_09",
@@ -176,7 +2018,32 @@
       "hp": 6500,
       "atk": 260,
       "xp_reward": 8500,
-      "drop_table": [{ "item_id": "wpn_t4_02", "chance": 0.3 }, { "item_id": "orb_08", "chance": 0.15 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t4_02",
+          "chance": 0.3
+        },
+        {
+          "item_id": "wpn_t4_21",
+          "chance": 0.04
+        },
+        {
+          "item_id": "arm_t4_21",
+          "chance": 0.04
+        },
+        {
+          "item_id": "wpn_t4_11",
+          "chance": 0.08
+        },
+        {
+          "item_id": "wpn_t4_n505",
+          "chance": 0.045
+        },
+        {
+          "item_id": "arm_t4_n502",
+          "chance": 0.045
+        }
+      ]
     }
   },
   {
@@ -184,10 +2051,192 @@
     "name": "Abyssal Throne",
     "recommended_level": "45-50+",
     "mobs": [
-      { "mob_id": "mob_10_01", "name": "Abyssal Leviathan", "hp": 2800, "atk": 220, "xp_reward": 3000, "drop_table": [{ "item_id": "wpn_t4_02", "chance": 0.08 }] },
-      { "mob_id": "mob_10_02", "name": "Chaos Warlord", "hp": 3400, "atk": 210, "xp_reward": 3300, "drop_table": [{ "item_id": "arm_t4_01", "chance": 0.1 }] },
-      { "mob_id": "mob_10_03", "name": "Nether Sorcerer", "hp": 2600, "atk": 250, "xp_reward": 3600, "drop_table": [{ "item_id": "wpn_t4_03", "chance": 0.1 }] },
-      { "mob_id": "mob_10_04", "name": "Oblivion Behemoth", "hp": 4000, "atk": 235, "xp_reward": 4000, "drop_table": [{ "item_id": "arm_t4_02", "chance": 0.1 }] }
+      {
+        "mob_id": "mob_10_01",
+        "name": "Abyssal Leviathan",
+        "hp": 2800,
+        "atk": 220,
+        "xp_reward": 3000,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_02",
+            "chance": 0.08
+          },
+          {
+            "item_id": "wpn_t4_22",
+            "chance": 0.008
+          },
+          {
+            "item_id": "wpn_t4_n401",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n401",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_02",
+        "name": "Chaos Warlord",
+        "hp": 3400,
+        "atk": 210,
+        "xp_reward": 3300,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t4_23",
+            "chance": 0.008
+          },
+          {
+            "item_id": "arm_t4_n402",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n402",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_03",
+        "name": "Nether Sorcerer",
+        "hp": 2600,
+        "atk": 250,
+        "xp_reward": 3600,
+        "drop_table": [
+          {
+            "item_id": "wpn_t4_03",
+            "chance": 0.1
+          },
+          {
+            "item_id": "wpn_t4_21",
+            "chance": 0.008
+          },
+          {
+            "item_id": "wpn_t4_n403",
+            "chance": 0.015
+          },
+          {
+            "item_id": "arm_t4_n403",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_04",
+        "name": "Oblivion Behemoth",
+        "hp": 4000,
+        "atk": 235,
+        "xp_reward": 4000,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.008
+          },
+          {
+            "item_id": "arm_t4_n404",
+            "chance": 0.015
+          },
+          {
+            "item_id": "wpn_t4_n404",
+            "chance": 0.015
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_new_01",
+        "name": "Abyssal Spawn",
+        "hp": 2700,
+        "atk": 210,
+        "xp_reward": 205,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_new_02",
+        "name": "Chaosbound Thrall",
+        "hp": 3150,
+        "atk": 225,
+        "xp_reward": 220,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_new_03",
+        "name": "Nether Mawling",
+        "hp": 2950,
+        "atk": 245,
+        "xp_reward": 225,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_new_04",
+        "name": "Doomforged Sentinel",
+        "hp": 3800,
+        "atk": 255,
+        "xp_reward": 250,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.07
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.035
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_10_new_05",
+        "name": "World-Ender Colossus",
+        "hp": 5200,
+        "atk": 310,
+        "xp_reward": 800,
+        "drop_table": [
+          {
+            "item_id": "arm_t4_02",
+            "chance": 0.44999999999999996
+          },
+          {
+            "item_id": "arm_t4_22",
+            "chance": 0.25
+          }
+        ],
+        "rare": true
+      }
     ],
     "boss": {
       "mob_id": "boss_10",
@@ -196,7 +2245,675 @@
       "hp": 10000,
       "atk": 320,
       "xp_reward": 15000,
-      "drop_table": [{ "item_id": "wpn_t4_02", "chance": 0.4 }, { "item_id": "arm_t4_02", "chance": 0.4 }, { "item_id": "orb_08", "chance": 0.25 }]
+      "drop_table": [
+        {
+          "item_id": "wpn_t4_02",
+          "chance": 0.4
+        },
+        {
+          "item_id": "arm_t4_02",
+          "chance": 0.4
+        },
+        {
+          "item_id": "wpn_t4_23",
+          "chance": 0.05
+        },
+        {
+          "item_id": "arm_t4_21",
+          "chance": 0.05
+        },
+        {
+          "item_id": "wpn_t4_22",
+          "chance": 0.05
+        },
+        {
+          "item_id": "arm_t4_23",
+          "chance": 0.05
+        },
+        {
+          "item_id": "wpn_t4_n501",
+          "chance": 0.045
+        },
+        {
+          "item_id": "arm_t4_n503",
+          "chance": 0.045
+        }
+      ]
+    }
+  },
+  {
+    "biome_id": 11,
+    "name": "🌋 Infernal Crucible",
+    "recommended_level": "50-60",
+    "mobs": [
+      {
+        "mob_id": "mob_11_01",
+        "name": "Cinderfang Hound",
+        "hp": 5800,
+        "atk": 430,
+        "xp_reward": 5200,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone11_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone11_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_11_02",
+        "name": "Magmaforged Juggernaut",
+        "hp": 7600,
+        "atk": 390,
+        "xp_reward": 5600,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone11_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone11_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_11_03",
+        "name": "Ashen Pyromancer",
+        "hp": 5400,
+        "atk": 490,
+        "xp_reward": 5900,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone11_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone11_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_11_04",
+        "name": "Obsidian Drake",
+        "hp": 8500,
+        "atk": 470,
+        "xp_reward": 6400,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone11_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone11_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_11_05",
+        "name": "Ember Tyrant",
+        "hp": 11000,
+        "atk": 560,
+        "xp_reward": 9000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone11_01",
+            "chance": 0.16
+          },
+          {
+            "item_id": "arm_zone11_01",
+            "chance": 0.14
+          },
+          {
+            "item_id": "wpn_boss_zone11",
+            "chance": 0.025
+          },
+          {
+            "item_id": "arm_boss_zone11",
+            "chance": 0.025
+          }
+        ],
+        "rare": true
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_11",
+      "name": "Balzareth, Flame Sovereign",
+      "min_level": 60,
+      "hp": 22000,
+      "atk": 650,
+      "xp_reward": 26000,
+      "drop_table": [
+        {
+          "item_id": "wpn_zone11_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_zone11_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_boss_zone11",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_boss_zone11",
+          "chance": 0.12
+        }
+      ]
+    }
+  },
+  {
+    "biome_id": 12,
+    "name": "🌌 Astral Expanse",
+    "recommended_level": "60-70",
+    "mobs": [
+      {
+        "mob_id": "mob_12_01",
+        "name": "Nebula Stalker",
+        "hp": 10500,
+        "atk": 610,
+        "xp_reward": 7600,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone12_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone12_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_12_02",
+        "name": "Cometbound Knight",
+        "hp": 12800,
+        "atk": 570,
+        "xp_reward": 8100,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone12_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone12_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_12_03",
+        "name": "Astral Witch",
+        "hp": 9700,
+        "atk": 690,
+        "xp_reward": 8500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone12_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone12_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_12_04",
+        "name": "Voidstar Devourer",
+        "hp": 14500,
+        "atk": 650,
+        "xp_reward": 9200,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone12_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone12_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_12_05",
+        "name": "Quasar Colossus",
+        "hp": 18000,
+        "atk": 760,
+        "xp_reward": 13000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone12_01",
+            "chance": 0.16
+          },
+          {
+            "item_id": "arm_zone12_01",
+            "chance": 0.14
+          },
+          {
+            "item_id": "wpn_boss_zone12",
+            "chance": 0.025
+          },
+          {
+            "item_id": "arm_boss_zone12",
+            "chance": 0.025
+          }
+        ],
+        "rare": true
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_12",
+      "name": "Orion, Eater of Stars",
+      "min_level": 70,
+      "hp": 36000,
+      "atk": 850,
+      "xp_reward": 38000,
+      "drop_table": [
+        {
+          "item_id": "wpn_zone12_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_zone12_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_boss_zone12",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_boss_zone12",
+          "chance": 0.12
+        }
+      ]
+    }
+  },
+  {
+    "biome_id": 13,
+    "name": "🌿 Worldroot Sanctum",
+    "recommended_level": "70-80",
+    "mobs": [
+      {
+        "mob_id": "mob_13_01",
+        "name": "Rootbound Guardian",
+        "hp": 18000,
+        "atk": 780,
+        "xp_reward": 10500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone13_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone13_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_13_02",
+        "name": "Elderbloom Witch",
+        "hp": 15500,
+        "atk": 880,
+        "xp_reward": 11000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone13_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone13_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_13_03",
+        "name": "Thornmaw Behemoth",
+        "hp": 22000,
+        "atk": 820,
+        "xp_reward": 11800,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone13_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone13_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_13_04",
+        "name": "Verdant Revenant",
+        "hp": 17000,
+        "atk": 940,
+        "xp_reward": 12500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone13_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone13_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_13_05",
+        "name": "Worldroot Ancient",
+        "hp": 28000,
+        "atk": 1050,
+        "xp_reward": 17500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone13_01",
+            "chance": 0.16
+          },
+          {
+            "item_id": "arm_zone13_01",
+            "chance": 0.14
+          },
+          {
+            "item_id": "wpn_boss_zone13",
+            "chance": 0.025
+          },
+          {
+            "item_id": "arm_boss_zone13",
+            "chance": 0.025
+          }
+        ],
+        "rare": true
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_13",
+      "name": "Sylvarath, the Eternal Bloom",
+      "min_level": 80,
+      "hp": 52000,
+      "atk": 1200,
+      "xp_reward": 55000,
+      "drop_table": [
+        {
+          "item_id": "wpn_zone13_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_zone13_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_boss_zone13",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_boss_zone13",
+          "chance": 0.12
+        }
+      ]
+    }
+  },
+  {
+    "biome_id": 14,
+    "name": "⚙️ Chrono-Forged Citadel",
+    "recommended_level": "80-90",
+    "mobs": [
+      {
+        "mob_id": "mob_14_01",
+        "name": "Rusttime Marauder",
+        "hp": 28000,
+        "atk": 1020,
+        "xp_reward": 14000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone14_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone14_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_14_02",
+        "name": "Chrono Sentinel",
+        "hp": 34000,
+        "atk": 970,
+        "xp_reward": 15000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone14_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone14_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_14_03",
+        "name": "Paradox Arcanist",
+        "hp": 26000,
+        "atk": 1150,
+        "xp_reward": 15800,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone14_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone14_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_14_04",
+        "name": "Clockwork Behemoth",
+        "hp": 39000,
+        "atk": 1080,
+        "xp_reward": 17000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone14_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone14_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_14_05",
+        "name": "Timeline Eraser",
+        "hp": 48000,
+        "atk": 1280,
+        "xp_reward": 23000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone14_01",
+            "chance": 0.16
+          },
+          {
+            "item_id": "arm_zone14_01",
+            "chance": 0.14
+          },
+          {
+            "item_id": "wpn_boss_zone14",
+            "chance": 0.025
+          },
+          {
+            "item_id": "arm_boss_zone14",
+            "chance": 0.025
+          }
+        ],
+        "rare": true
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_14",
+      "name": "The First Mechanism",
+      "min_level": 90,
+      "hp": 78000,
+      "atk": 1500,
+      "xp_reward": 80000,
+      "drop_table": [
+        {
+          "item_id": "wpn_zone14_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_zone14_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_boss_zone14",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_boss_zone14",
+          "chance": 0.12
+        }
+      ]
+    }
+  },
+  {
+    "biome_id": 15,
+    "name": "☀️ Celestial Zenith",
+    "recommended_level": "90-100",
+    "mobs": [
+      {
+        "mob_id": "mob_15_01",
+        "name": "Solar Revenant",
+        "hp": 42000,
+        "atk": 1300,
+        "xp_reward": 18500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone15_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone15_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_15_02",
+        "name": "Radiant Executioner",
+        "hp": 50000,
+        "atk": 1250,
+        "xp_reward": 19800,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone15_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone15_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_15_03",
+        "name": "Seraphic Dragon",
+        "hp": 58000,
+        "atk": 1400,
+        "xp_reward": 21500,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone15_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone15_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_15_04",
+        "name": "Dawnfall Herald",
+        "hp": 46000,
+        "atk": 1550,
+        "xp_reward": 22000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone15_01",
+            "chance": 0.1
+          },
+          {
+            "item_id": "arm_zone15_01",
+            "chance": 0.08
+          }
+        ]
+      },
+      {
+        "mob_id": "mob_15_05",
+        "name": "Apocalypse Avatar",
+        "hp": 72000,
+        "atk": 1750,
+        "xp_reward": 30000,
+        "drop_table": [
+          {
+            "item_id": "wpn_zone15_01",
+            "chance": 0.16
+          },
+          {
+            "item_id": "arm_zone15_01",
+            "chance": 0.14
+          },
+          {
+            "item_id": "wpn_boss_zone15",
+            "chance": 0.025
+          },
+          {
+            "item_id": "arm_boss_zone15",
+            "chance": 0.025
+          }
+        ],
+        "rare": true
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_15",
+      "name": "Aureon, the Last Light",
+      "min_level": 100,
+      "hp": 115000,
+      "atk": 2100,
+      "xp_reward": 125000,
+      "drop_table": [
+        {
+          "item_id": "wpn_zone15_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "arm_zone15_01",
+          "chance": 0.25
+        },
+        {
+          "item_id": "wpn_boss_zone15",
+          "chance": 0.12
+        },
+        {
+          "item_id": "arm_boss_zone15",
+          "chance": 0.12
+        }
+      ]
     }
   }
 ]

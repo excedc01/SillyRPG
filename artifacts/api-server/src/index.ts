@@ -1,5 +1,7 @@
 import app from "./app";
 import { logger } from "./lib/logger";
+import { migrateLegacyClassIds } from "./lib/legacy-migrations";
+import { seedExtraItems } from "./lib/seed-items";
 import { startTelegramBot } from "./lib/telegram-bot";
 
 const rawPort = process.env["PORT"];
@@ -23,8 +25,20 @@ app.listen(port, (err) => {
   }
 
   logger.info({ port }, "Server listening");
+  const migrated = migrateLegacyClassIds().catch((error: unknown) => {
+    logger.error(
+      { errorName: error instanceof Error ? error.name : "UnknownError" },
+      "Legacy class migration failed",
+    );
+  });
+  void seedExtraItems().catch((error: unknown) => {
+    logger.error(
+      { errorName: error instanceof Error ? error.name : "UnknownError" },
+      "Extra item catalog could not be synced",
+    );
+  });
   if (process.env.TELEGRAM_BOT_TOKEN) {
-    void startTelegramBot().catch((error: unknown) => {
+    void migrated.then(() => startTelegramBot()).catch((error: unknown) => {
       logger.error(
         { errorName: error instanceof Error ? error.name : "UnknownError" },
         "Telegram bot could not start",
