@@ -1,0 +1,124 @@
+[
+  {
+    "biome_id": 1,
+    "name": "Emerald Grove",
+    "recommended_level": "0-5",
+    "mobs": [
+      {
+        "mob_id": "mob_01_01",
+        "name": "Chicken",
+        "hp": 20,
+        "atk": 3,
+        "xp_reward": 10,
+        "drop_table": [
+          { "item_id": "arm_t0_01", "chance": 0.10 }
+        ]
+      },
+      {
+        "mob_id": "mob_01_02",
+        "name": "Sheep",
+        "hp": 35,
+        "atk": 5,
+        "xp_reward": 18,
+        "drop_table": [
+          { "item_id": "wpn_t0_01", "chance": 0.15 }
+        ]
+      },
+      {
+        "mob_id": "mob_01_03",
+        "name": "Slime",
+        "hp": 50,
+        "atk": 8,
+        "xp_reward": 28,
+        "drop_table": [
+          { "item_id": "wpn_t0_02", "chance": 0.12 },
+          { "item_id": "arm_t0_02", "chance": 0.10 }
+        ]
+      },
+      {
+        "mob_id": "mob_01_04",
+        "name": "Goblin",
+        "hp": 75,
+        "atk": 12,
+        "xp_reward": 45,
+        "drop_table": [
+          { "item_id": "wpn_t1_02", "chance": 0.08 },
+          { "item_id": "arm_t0_03", "chance": 0.10 }
+        ]
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_01",
+      "name": "Frustas",
+      "min_level": 5,
+      "hp": 250,
+      "atk": 22,
+      "xp_reward": 200,
+      "drop_table": [
+        { "item_id": "wpn_t1_01", "chance": 0.50 },
+        { "item_id": "orb_01", "chance": 0.15 }
+      ]
+    }
+  },
+  {
+    "biome_id": 2,
+    "name": "Whispering Woods",
+    "recommended_level": "5-10",
+    "mobs": [
+      {
+        "mob_id": "mob_02_01",
+        "name": "Giant Bat",
+        "hp": 110,
+        "atk": 16,
+        "xp_reward": 60,
+        "drop_table": [
+          { "item_id": "arm_t1_01", "chance": 0.12 }
+        ]
+      },
+      {
+        "mob_id": "mob_02_02",
+        "name": "Wild Boar",
+        "hp": 150,
+        "atk": 20,
+        "xp_reward": 85,
+        "drop_table": [
+          { "item_id": "arm_t1_02", "chance": 0.10 }
+        ]
+      },
+      {
+        "mob_id": "mob_02_03",
+        "name": "Forest Spider",
+        "hp": 130,
+        "atk": 24,
+        "xp_reward": 95,
+        "drop_table": [
+          { "item_id": "wpn_t1_03", "chance": 0.10 }
+        ]
+      },
+      {
+        "mob_id": "mob_02_04",
+        "name": "Bandit Scout",
+        "hp": 180,
+        "atk": 28,
+        "xp_reward": 120,
+        "drop_table": [
+          { "item_id": "wpn_t2_01", "chance": 0.08 }
+        ]
+      }
+    ],
+    "boss": {
+      "mob_id": "boss_02",
+      "name": "Shadow Alpha Wolf",
+      "min_level": 10,
+      "hp": 500,
+      "atk": 42,
+      "xp_reward": 450,
+      "drop_table": [
+        { "item_id": "arm_t1_03", "chance": 0.50 },
+        { "item_id": "orb_03", "chance": 0.15 }
+      ]
+    }
+  },
+  {
+    "biome_id": 3,
+    "name": "Sunke
